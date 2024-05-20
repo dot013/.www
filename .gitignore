@@ -1,0 +1,5 @@
+Session.vim
+.direnv
+.vercel
+*_templ.go
+dist
