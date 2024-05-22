@@ -5,6 +5,7 @@ import (
 	"flag"
 	"log"
 
+	"guz.one/config"
 	"guz.one/internals"
 )
 
@@ -15,7 +16,7 @@ func main() {
 	w := internals.StaticWriter{
 		DistDir:   dir,
 		StaticDir: staticDir,
-		Pages:     internals.ROUTES,
+		Pages:     config.ROUTES,
 		Context:   context.Background(),
 		Logger:    *log.Default(),
 	}
