@@ -3,3 +3,5 @@ Session.vim
 .vercel
 *_templ.go
 dist
+tmp
+bin
