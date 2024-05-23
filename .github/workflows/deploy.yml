@@ -10,6 +10,10 @@ jobs:
     name: Deploy
     if: ${{ github.repository == 'dot013/.www-new' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      deployments: write
     strategy:
       matrix:
         node-version: [20]
