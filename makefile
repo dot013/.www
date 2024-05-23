@@ -6,6 +6,7 @@ dev:
 	pnpm unocss -w &
 	air -build.pre_cmd 'make templ' \
 		-build.include_ext 'templ' \
+		-build.include_ext 'css' \
 		-proxy.enabled true \
 		-proxy.app_port $(PORT) \
 		-proxy.proxy_port $$(($(PORT) + 1)) \
