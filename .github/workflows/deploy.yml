@@ -20,7 +20,8 @@ jobs:
       - name: Build project
         run: |
           nix shell nixpkgs#go nixpkgs#gnumake github:a-h/templ
-          make build-vercel
+          templ --help
+          go list
       - name: Deploy
         uses: amondnet/vercel-action@v25
         with:
