@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Deploy
-    if: ${{ github.repository == 'dot013/.www-new' }}
+    if: ${{ github.repository == 'dot013/.www' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
