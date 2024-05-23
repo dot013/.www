@@ -34,7 +34,7 @@ build-vercel: bin/vercel build-static
 bin/www: main.go templ
 	go build -o ./bin/www ./main.go
 
-bin/vercel: cmd/vercel/main.go templ build-vercel
+bin/vercel: cmd/vercel/main.go templ
 	go build -o ./bin/vercel ./cmd/vercel/main.go
 
 templ:
