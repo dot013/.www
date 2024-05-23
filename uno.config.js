@@ -23,7 +23,19 @@ export default defineConfig({
 		presetIcons(),
 		presetTypography(),
 		presetUno(),
-		presetWebFonts(),
+		presetWebFonts({
+			provider: 'bunny',
+			fonts: {
+				sans: {
+					name: 'Inter',
+					provider: 'none'
+				},
+				cal: {
+					name: 'Cal Sans',
+					provider: 'none',
+				},
+			},
+		}),
 	],
 	transformers: [
 		transformerDirectives(),
