@@ -16,9 +16,8 @@ jobs:
       - uses: DeterminateSystems/flake-checker-action@main
       - name: Build
         run: |
-          nix develop
-          templ generate
-          go run ./cmd/build/main.go
+          nix run github:a-h/templ -- generate
+          nix run nixpkgs#go -- run ./cmd/build/main.go
       - name: Deploy
         uses: amondnet/vercel-action@v25
         with:
