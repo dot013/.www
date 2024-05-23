@@ -34,6 +34,10 @@ export default defineConfig({
 					name: 'Cal Sans',
 					provider: 'none',
 				},
+				mono: {
+					name: 'Fira Code',
+					provider: 'none',
+				},
 			},
 		}),
 	],
