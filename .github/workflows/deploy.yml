@@ -19,7 +19,7 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@main
       - name: Build project
         run: |
-          nix shell nixpkgs#go github:a-h/templ --command 'make build-vercel'
+          nix shell nixpkgs#go nixpkgs#gnumake github:a-h/templ --command 'make build-vercel'
       - name: Deploy
         uses: amondnet/vercel-action@v25
         with:
