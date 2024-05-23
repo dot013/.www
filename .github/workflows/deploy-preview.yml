@@ -1,4 +1,4 @@
-name: Deploy to vercel
+name: Deploy preview to vercel
 
 on:
   workflow_run:
@@ -6,13 +6,13 @@ on:
       - Checks
     types:
       - completed
-    branches:
+    branches-ignore:
       - main
 
 jobs:
   deploy:
-    name: Deploy
-    if: ${{ github.repository == 'dot013/.www-new' }}
+    name: Deploy preview
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'dot013/.www-new' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,4 +31,3 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
