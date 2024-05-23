@@ -3,7 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    templ.url = "github:a-h/templ";
+    templ.url = "github:a-h/templ?ref=tags/v0.2.697";
   };
   outputs =
     { self
@@ -29,9 +29,6 @@
               templ
               nodePackages_latest.vercel
             ];
-            shellHook = "
-              export GOOS=linux
-            ";
           };
     });
 }
