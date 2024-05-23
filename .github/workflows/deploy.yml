@@ -17,6 +17,7 @@ jobs:
       - name: Build
         run: |
           nix run github:a-h/templ -- generate
+          nix run nixpkgs#go -- mod tidy
           nix run nixpkgs#go -- run ./cmd/build/main.go
       - name: Deploy
         uses: amondnet/vercel-action@v25
