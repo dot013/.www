@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json.schemastore.org/jsconfig",
+	"compilerOptions": {
+		"checkJs": true,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"module": "ESNext",
+		"target": "ESNext",
+		"alwaysStrict": true,
+		"outDir": "./dist"
+	},
+	"include": [
+		"./uno.config.js"
+	],
+	"exclude": [
+		"./node_modules/**",
+		"./dist/**"
+	]
+}
