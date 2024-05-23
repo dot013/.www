@@ -1,18 +1,21 @@
 name: Deploy preview to vercel
 
 on:
-  workflow_run:
-    workflows:
-      - Checks
-    types:
-      - completed
-    branches-ignore:
+  push:
+    branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   deploy:
     name: Deploy preview
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'dot013/.www-new' }}
+    if: ${{ github.repository == 'dot013/.www-new' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
