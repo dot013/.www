@@ -13,10 +13,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Install nix
         uses: nixbuild/nix-quick-install-action@v28
-      - name: Start shell
-        run: nix develop .#CI
       - name: Build
         run:
+          nix develop .#CI
           templ generate
           go run ./cmd/build/main.go
       - name: Deploy
