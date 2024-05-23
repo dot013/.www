@@ -43,7 +43,7 @@ TEMPL_FILES=$(patsubst %.templ, %_templ.go, $(wildcard **/*.templ))
 templ: $(TEMPL_FILES)
 	@echo Generating templ files
 %_templ.go: %.templ
-	templ generate
+	templ generate -f $^
 
 clean:
 	if [[ -d "dist" ]]; then rm -r ./dist; fi
