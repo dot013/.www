@@ -26,6 +26,8 @@
           golangci-lint
           templ
           nodePackages_latest.vercel
+          nodejs_20
+          corepack_20
         ];
       };
     });

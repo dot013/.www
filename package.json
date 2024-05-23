@@ -1,0 +1,9 @@
+{
+  "name": "www",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@unocss/cli": "^0.60.3",
+    "unocss": "^0.60.3"
+  }
+}

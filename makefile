@@ -3,6 +3,7 @@ PORT?=8080
 all: run
 
 dev:
+	pnpm unocss -w &
 	air -build.pre_cmd 'make templ' \
 		-build.include_ext 'templ' \
 		-proxy.enabled true \
@@ -27,6 +28,7 @@ run-vercel: bin/vercel
 	./bin/vercel
 
 build-static: templ
+	pnpm unocss
 	go run ./cmd/build/main.go
 
 build-vercel: bin/vercel build-static
@@ -49,4 +51,5 @@ clean:
 	if [[ -d "dist" ]]; then rm -r ./dist; fi
 	if [[ -d "tmp" ]]; then rm -r ./tmp; fi
 	if [[ -d "bin" ]]; then rm -r ./bin; fi
+	rm ./static/uno.css
 	rm $(TEMPL_FILES)
