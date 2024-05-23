@@ -16,7 +16,7 @@ jobs:
       - uses: DeterminateSystems/flake-checker-action@main
       - name: Build
         run: |
-          nix develop .#CI
+          nix develop
           templ generate
           go run ./cmd/build/main.go
       - name: Deploy

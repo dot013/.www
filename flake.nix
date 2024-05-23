@@ -19,12 +19,6 @@
       templ = inputs.templ.packages.${system}.templ;
     in
     {
-      devShells.CI = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          go
-          templ
-        ];
-      };
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           air
