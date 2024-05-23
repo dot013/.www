@@ -11,14 +11,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - uses: DeterminateSystems/flake-checker-action@main
-      - name: Build
+      # - uses: DeterminateSystems/nix-installer-action@main
+      # - uses: DeterminateSystems/magic-nix-cache-action@main
+      # - uses: DeterminateSystems/flake-checker-action@main
+      - name: Setup go
+        uses: actions/setup-go@v5
+      - name: Generate templ files
         run: |
-          nix run github:a-h/templ -- generate
-          nix run nixpkgs#go -- mod tidy
-          nix run nixpkgs#go -- run ./cmd/build/main.go
+          go get github.com/a-h/templ
+          templ generate
       - name: Deploy
         uses: amondnet/vercel-action@v25
         with:
