@@ -20,13 +20,8 @@ bin/www: main.go templ
 bin/vercel: cmd/vercel/main.go templ build-vercel
 	go build -o ./bin/vercel ./cmd/vercel/main.go
 
-# For some reason "templ generate" does not detect the files, so this is a
-# workaround.
-TEMPL_FILES=$(patsubst %.templ, %_templ.go, $(wildcard **/*.templ))
-templ: $(TEMPL_FILES)
-	@echo Generating templ files
-%_templ.go: %.templ
-	templ generate -f $^ > /dev/null
+templ:
+	templ generate
 
 clean:
 	if [[ -d "dist" ]]; then rm -r ./dist; fi
