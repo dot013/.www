@@ -3,9 +3,9 @@ package config
 import (
 	"net/http"
 
-	"guz.one/api"
-	"guz.one/internals"
-	"guz.one/pages"
+	"www/api"
+	"www/internals"
+	"www/pages"
 )
 
 var ROUTES = []internals.Page{

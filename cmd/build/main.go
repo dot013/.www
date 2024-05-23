@@ -5,8 +5,8 @@ import (
 	"flag"
 	"log"
 
-	"guz.one/config"
-	"guz.one/internals"
+	"www/config"
+	"www/internals"
 )
 
 func main() {

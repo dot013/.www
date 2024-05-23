@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"os"
 
-	"guz.one/config"
-	"guz.one/internals"
+	"www/config"
+	"www/internals"
 )
 
 type VercelConfig struct {

@@ -8,8 +8,8 @@ import (
 	"slices"
 	"strings"
 
-	"guz.one/config"
-	"guz.one/internals"
+	"www/config"
+	"www/internals"
 )
 
 var logger = log.Default()
