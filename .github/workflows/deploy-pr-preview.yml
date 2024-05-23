@@ -1,4 +1,4 @@
-name: Deploy preview to vercel
+name: Deploy PR preview to Vercel
 
 on:
   pull_request:
