@@ -37,7 +37,12 @@ bin/www: main.go templ
 bin/vercel: cmd/vercel/main.go templ
 	go build -o ./bin/vercel ./cmd/vercel/main.go
 
-templ:
+# For some reason "templ generate" does not detect the files in CI, so this is a
+# workaround.
+TEMPL_FILES=$(patsubst %.templ, %_templ.go, $(wildcard **/*.templ))
+templ: $(TEMPL_FILES)
+	@echo Generating templ files
+%_templ.go: %.templ
 	templ generate
 
 clean:
