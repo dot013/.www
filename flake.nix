@@ -19,16 +19,20 @@
       templ = inputs.templ.packages.${system}.templ;
     in
     {
-      devShells.default =
-        pkgs.mkShell
-          {
-            buildInputs = with pkgs; [
-              air
-              go
-              golangci-lint
-              templ
-              nodePackages_latest.vercel
-            ];
-          };
+      devShells.CI = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          go
+          templ
+        ];
+      };
+      devShells.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          air
+          go
+          golangci-lint
+          templ
+          nodePackages_latest.vercel
+        ];
+      };
     });
 }

@@ -14,7 +14,7 @@ jobs:
       - name: Install nix
         uses: nixbuild/nix-quick-install-action@v28
       - name: Start shell
-        run: nix develop
+        run: nix develop .#CI
       - name: Build
         run: make build-vercel
       - name: Deploy
