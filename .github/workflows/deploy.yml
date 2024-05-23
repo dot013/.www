@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install nix
-        uses: nixbuild/nix-quick-install@v28
+        uses: nixbuild/nix-quick-install-action@v28
       - name: Start shell
         run: nix develop
       - name: Build
