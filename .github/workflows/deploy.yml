@@ -46,3 +46,6 @@ jobs:
           VERCEL_ORG_ID: ${{ SECRETS.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           PRODUCTION: true
+          ALIAS_DOMAINS: |
+            beta.guz.one
+            guz.one
