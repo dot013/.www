@@ -10,6 +10,9 @@ jobs:
     name: Deploy
     if: ${{ github.repository == 'dot013/.www-new' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
