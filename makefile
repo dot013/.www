@@ -1,7 +1,24 @@
+PORT?=8080
+
 all: run
 
 dev:
-	air
+	air -build.pre_cmd 'make templ' \
+		-build.include_ext 'templ' \
+		-proxy.enabled true \
+		-proxy.app_port $(PORT) \
+		-proxy.proxy_port $$(($(PORT) + 1)) \
+		-- -p $(PORT)
+
+dev-vercel:
+	air -build.pre_cmd 'make build-vercel' \
+		-build.include_ext 'templ' \
+		-build.cmd 'make build-vercel' \
+		-build.bin './bin/vercel' \
+		-proxy.enabled true \
+		-proxy.app_port $(PORT) \
+		-proxy.proxy_port $$(($(PORT) + 1)) \
+		-- -p $(PORT)
 
 run: bin/www
 	./bin/www
@@ -12,7 +29,7 @@ run-vercel: bin/vercel
 build-static: templ
 	go run ./cmd/build/main.go
 
-build-vercel: build-static
+build-vercel: bin/vercel build-static
 
 bin/www: main.go templ
 	go build -o ./bin/www ./main.go
