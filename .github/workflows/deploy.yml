@@ -16,7 +16,9 @@ jobs:
       - name: Start shell
         run: nix develop .#CI
       - name: Build
-        run: make build-vercel
+        run:
+          templ generate
+          go run ./cmd/build/main.go
       - name: Deploy
         uses: amondnet/vercel-action@v25
         with:
