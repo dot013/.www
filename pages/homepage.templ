@@ -2,87 +2,11 @@ package pages
 
 import (
 	"www/layouts"
+	"www/components"
 )
 
 templ Homepage() {
 	@layouts.Page("013") {
-		<main>
-			<img src="/logo-013.svg" alt="" width="100" height="100"/>
-			<h1 class="font-cal">Someone who's trying to improve</h1>
-			<div class="text-#181818 flex flex-row justify-between items-center">
-				<nav>
-					<ul class="list-none flex flex-row gap-3 p-0">
-						<li class="i-simple-icons:github w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://github.com/guz013"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								GitHub
-							</a>
-						</li>
-						<li class="i-simple-icons:codeberg w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://codeberg.org/guz013"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								Codeberg
-							</a>
-						</li>
-						<li class="i-simple-icons:twitter w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://twitter.com/guz013_"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								Twitter
-							</a>
-						</li>
-						<li class="i-simple-icons:mastodon w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://mastodon.social/@guz013"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								Mastodon
-							</a>
-						</li>
-						<li class="i-simple-icons:instagram w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://instagram.com/guz013_"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								Instagram
-							</a>
-						</li>
-						<li class="i-simple-icons:pixelfed w-4 hover:text-#ababab transition-colors">
-							<a
-								href="https://pixelfed.social/@guz013"
-								target="_blank"
-								class="opacity-0"
-								rel="noreferrer noopener"
-							>
-								Pixelfed
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<p class="m-0">
-					<a class="text-#181818 hover:text-#ababab transition-colors" href="mailto:contact.guz013@gmail.com">
-						2024 &copy Gustavo L. de Mello
-					</a>
-				</p>
-			</div>
-		</main>
-		<footer class="fixed bottom-0 text-xs font-mono ">
-			<p><a class="text-#181818 hover:text-#ababab" href="https://dot013-www-guz013-guzsprojects.vercel.app">new website in development</a></p>
-		</footer>
+		@components.Hero()
 	}
 }

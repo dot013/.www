@@ -1,0 +1,46 @@
+@font-face {
+	font-family: Inter;
+	src: url(inter.woff2);
+}
+
+@font-face {
+	font-family: Cal Sans;
+	src: url(cal-sans.woff2);
+}
+
+@font-face {
+	font-family: Fira Code;
+	src: url(fira-code.woff2);
+}
+
+@keyframes anim-in {
+	from {
+		opacity: var(--anim-fade-from, 1);
+		transform:
+			translateY(var(--anim-slide-from-y, 0))
+			translateX(var(--anim-slide-from-x, 0));
+	}
+	to {
+		opacity: var(--anim-fade-to, 1);
+		transform:
+			translateY(var(--anim-slide-to-y, 0))
+			translateX(var(--anim-slide-to-x, 0));
+	}
+}
+
+.animate {
+	animation-name: anim-in;
+	animation-delay: calc(var(--anim-delay, 0) * var(--anim-stagger, 1) * var(--start, 1));
+	animation-duration: var(--anim-duration, 1s);
+	animation-fill-mode: var(--anim--fill-mode, forwards);
+	animation-iteration-count: var(--anim-iter-count, 1);
+	animation-timing-function: var(--anim-timing, ease-in-out);
+}
+
+.fade-in {
+	--anim-fade-from: 0;
+}
+
+.slide-from-b {
+	--anim-slide-from-y: 1.7rem;
+}

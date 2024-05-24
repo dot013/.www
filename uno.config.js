@@ -12,7 +12,7 @@ export default defineConfig({
 	cli: {
 		entry: {
 			patterns: [
-				'./{pages,layouts}/**/*.templ',
+				'./{components,layouts,pages}/**/*.templ',
 				'./static/**/*.{js,css,html}',
 				'!./static/uno.css',
 			],
