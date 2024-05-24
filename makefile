@@ -10,8 +10,7 @@ dev-unocss:
 
 dev-air:
 	air -build.pre_cmd 'make templ' \
-		-build.include_ext 'templ' \
-		-build.include_ext 'css' \
+		-build.include_ext 'templ,css' \
 		-proxy.enabled true \
 		-proxy.app_port $(PORT) \
 		-proxy.proxy_port $$(($(PORT) + 1)) \
