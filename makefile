@@ -10,7 +10,7 @@ dev:
 		-proxy.enabled true \
 		-proxy.app_port $(PORT) \
 		-proxy.proxy_port $$(($(PORT) + 1)) \
-		-- -p $(PORT)
+		-- -p $(PORT) -d
 
 dev-vercel:
 	air -build.pre_cmd 'make build-vercel' \
