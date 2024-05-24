@@ -13,6 +13,8 @@ func main() {
 	dir := flag.String("d", "./dist", "the directory to write the files")
 	staticDir := flag.String("s", "./static", "the directory to copy static files from")
 
+	flag.Parse()
+
 	w := internals.StaticWriter{
 		DistDir:   dir,
 		StaticDir: staticDir,

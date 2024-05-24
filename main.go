@@ -18,6 +18,8 @@ func main() {
 	staticDir := flag.String("s", "./static", "the directory to copy static files from")
 	port := flag.Int("p", 8080, "the port to run the server")
 
+	flag.Parse()
+
 	mux := http.NewServeMux()
 
 	config.APIROUTES(mux)

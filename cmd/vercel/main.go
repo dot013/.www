@@ -24,6 +24,8 @@ func main() {
 	staticDir := flag.String("s", "./static", "the directory to copy static files from")
 	port := flag.Int("p", 8080, "the port to run the server")
 
+	flag.Parse()
+
 	configFile, err := os.ReadFile(*configPath)
 	if err != nil {
 		logger.Fatalf("Unable to read vercel.json file due to:\n%s", err)
