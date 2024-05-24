@@ -17,8 +17,13 @@ var logger = log.Default()
 func main() {
 	staticDir := flag.String("s", "./static", "the directory to copy static files from")
 	port := flag.Int("p", 8080, "the port to run the server")
+	dev := flag.Bool("d", false, "if the server is in development mode")
 
 	flag.Parse()
+
+	if *dev {
+		log.Printf("Running server in DEVELOPMENT MODE")
+	}
 
 	mux := http.NewServeMux()
 
@@ -33,6 +38,10 @@ func main() {
 		mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
 			logger.Printf("Handling request. path=%s", r.URL.Path)
 
+			if *dev {
+				w.Header().Add("Cache-Control", "max-age=0")
+			}
+
 			w.Header().Add("Content-Type", "text/html")
 
 			err := route.Component.Render(r.Context(), w)
@@ -42,6 +51,10 @@ func main() {
 		})
 	}
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if *dev {
+			w.Header().Add("Cache-Control", "max-age=0")
+		}
+
 		if r.URL.Path != "/" {
 			logger.Printf("Handling file server request. path=%s", r.URL.Path)
 			http.FileServer(http.Dir(*staticDir)).ServeHTTP(w, r)
