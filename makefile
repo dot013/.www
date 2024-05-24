@@ -3,7 +3,12 @@ PORT?=8080
 all: run
 
 dev:
-	pnpm unocss -w &
+	$(MAKE) -j 2 dev-unocss dev-air
+
+dev-unocss:
+	pnpm unocss -w
+
+dev-air:
 	air -build.pre_cmd 'make templ' \
 		-build.include_ext 'templ' \
 		-build.include_ext 'css' \
