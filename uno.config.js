@@ -9,6 +9,15 @@ import {
 } from 'unocss';
 
 export default defineConfig({
+	theme: {
+		colors: {
+			'black': '#000000',
+			'white': '#ffffff',
+			'light-gray': '#9c9c9c',
+			'gray': '#383838',
+			'dark-gray': '#0c0c0c',
+		},
+	},
 	cli: {
 		entry: {
 			patterns: [
