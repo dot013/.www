@@ -17,14 +17,13 @@
 	from {
 		opacity: var(--anim-fade-from, 1);
 		transform:
-			translateY(var(--anim-slide-from-y, 0))
-			translateX(var(--anim-slide-from-x, 0));
+			translateY(var(--anim-slide-from-y, 0)) translateX(var(--anim-slide-from-x, 0));
 	}
+
 	to {
 		opacity: var(--anim-fade-to, 1);
 		transform:
-			translateY(var(--anim-slide-to-y, 0))
-			translateX(var(--anim-slide-to-x, 0));
+			translateY(var(--anim-slide-to-y, 0)) translateX(var(--anim-slide-to-x, 0));
 	}
 }
 
@@ -43,4 +42,8 @@
 
 .slide-from-b {
 	--anim-slide-from-y: 1.7rem;
+}
+
+.slide-from-r {
+	--anim-slide-from-x: 1.7rem;
 }

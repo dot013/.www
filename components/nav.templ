@@ -1,0 +1,67 @@
+package components
+
+import (
+	"fmt"
+)
+
+type Link struct {
+	Text string
+	Link templ.SafeURL
+}
+
+templ Nav(links []Link) {
+	<section class="lg:flex lg:flex-row lg:justify-between fixed top-0 font-cal w-90% lg:w-80% xl:w-90%">
+		<p class="text-gray">Gustavo "Guz" L. de Mello</p>
+		<nav class="hidden lg:block">
+			<ul class="flex flex-row gap-3 list-none">
+				for _, i := range links {
+					<li class="transform-gpu hover:-translate-y-0.2 transition-transform">
+						<a
+							class={ "text-gray hover:text-white no-underline " +
+							"hover:underline transition-color transition-1s" }
+							id={ fmt.Sprintf("nav-anchor-%s", i.Link) }
+							href={ i.Link }
+						>
+							{ i.Text }
+						</a>
+					</li>
+				}
+			</ul>
+		</nav>
+	</section>
+	<button
+		class={ "block lg:hidden p-0.3 bg-black/97 b-0 m-0 outline-0 shadow-2xl " +
+		"fixed bottom-5 right-5 text-gray z-100" }
+		popovertarget="nav-popover"
+	>
+		<span class="i-solar:hamburger-menu-broken w-2rem h-2rem block">Menu</span>
+	</button>
+	<nav
+		class={ "lg:hidden absolute pb-10 p-5 m-0 b-0 h-100vh bg-black/97 shadow-black shadow-2xl z-1 " +
+		"animate slide-from-r fade-in overflow-hidden" }
+		style="inset: unset; bottom: 0; right: 0; --anim-duration: 300ms; --anim-slide-from-x: 50%;"
+		id="nav-popover"
+		popover
+	>
+		<div class="text-right h-100% w-100% flex flex-col-reverse">
+			<ul class="flex flex-col h-fit gap-3 font-cal text-xl pl-0 text-gray list-none">
+				for _, i := range links {
+					<li
+						class={ "hover:text-white transform-gpu hover:-translate-y-0.2 " +
+					"transition-transform after:content-['@'] " +
+					"after:pl-4 after:i-solar:posts-carousel-vertical-line-duotone" }
+					>
+						<a
+							class={ "text-gray hover:text-white no-underline " +
+						"hover:underline transition-color transition-1s" }
+							id={ fmt.Sprintf("nav-anchor-%s", i.Link) }
+							href={ i.Link }
+						>
+							{ i.Text }
+						</a>
+					</li>
+				}
+			</ul>
+		</div>
+	</nav>
+}
