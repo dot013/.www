@@ -2,7 +2,7 @@
   "name": "www",
   "version": "0.0.1",
   "devDependencies": {
-    "@iconify-json/simple-icons": "^1.1.102",
+    "@iconify-json/simple-icons": "^1.1.103",
     "@iconify-json/solar": "^1.1.9",
     "@types/node": "^20.12.12",
     "@unocss/cli": "^0.60.3",
