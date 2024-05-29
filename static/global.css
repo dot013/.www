@@ -27,6 +27,18 @@
 	}
 }
 
+@media (hover: hover) {
+	.cannot-hover {
+		display: none;
+	}
+}
+
+@media not all and (hover: hover) {
+	.can-hover {
+		display: none;
+	}
+}
+
 .animate {
 	animation-name: anim-in;
 	animation-delay: calc(var(--anim-delay, 0) * var(--anim-stagger, 1) * var(--start, 1));
