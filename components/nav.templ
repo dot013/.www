@@ -10,7 +10,10 @@ type Link struct {
 }
 
 templ Nav(links []Link) {
-	<section class="flex flex-row justify-between fixed top-0 font-cal w-90% lg:w-80% xl:w-90%">
+	<div aria-hidden="true" class="fixed top-0 w-screen h-20vh bg-transparent bg-gradient-to-b from-black from-20% z-100"></div>
+	<section
+		class="flex flex-row justify-between fixed top-0 font-cal w-90% lg:w-80% xl:w-90% z-110"
+	>
 		<p class="text-gray cannot-hover md:block!">Gustavo "Guz" L. de Mello</p>
 		<p class="text-gray can-hover md:hidden">Guz</p>
 		<nav class="can-hover">
