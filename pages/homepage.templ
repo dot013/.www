@@ -15,34 +15,69 @@ templ Homepage() {
 			{Text: "contact", Link: templ.SafeURL("#contact")},
 		})
 		<header
-			class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem  w-90% lg:w-80% xl:w-60%"
+			class="h-screen w-screen flex justify-center items-center"
 			style="--anim-slide-from-y: 10px; --anim-delay: 120ms; --anim-duration: 0.6s;"
 		>
-			<div class="w-50% xl:w-25%">
-				<img
-					src="/logo-013.svg"
-					class="animate slide-from-b fade-in"
-					style="--anim-stagger: 1;  opacity: 0;"
-				/>
+			<div class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem w-90% lg:w-80% xl:w-60%">
+				<div class="w-50% xl:w-25%">
+					<img
+						src="/logo-013.svg"
+						class="animate slide-from-b fade-in"
+						style="--anim-stagger: 1;  opacity: 0;"
+					/>
+				</div>
+				<hgroup class="font-cal w-full lg:max-w-45rem">
+					<h1
+						class={ "mb-0 lg:mt-0 prose text-5xl lg:text-6xl xl:text-7xl " +
+						"animate slide-from-b fade-in" }
+						style="--anim-stagger: 2; opacity: 0;"
+					>
+						<q class="after:content-[''] before:content-['']">
+							Someone who's trying to improve
+						</q>
+					</h1>
+					<p
+						class="text-2xl lg:text-3xl opacity-0 animate slide-from-b fade-in"
+						style="--anim-stagger: 3; opacity: 0;"
+					>
+						<cite class="not-italic before:content-['-'] before:pr-2">
+							guz013
+						</cite>
+					</p>
+				</hgroup>
 			</div>
-			<hgroup class="font-cal w-full lg:max-w-45rem">
-				<h1
-					class="mb-0 lg:mt-0 prose text-5xl lg:text-6xl xl:text-7xl animate slide-from-b fade-in"
-					style="--anim-stagger: 2; opacity: 0;"
-				>
-					<q class="after:content-[''] before:content-['']">
-						Someone who's trying to improve
-					</q>
-				</h1>
-				<p
-					class="text-2xl lg:text-3xl opacity-0 animate slide-from-b fade-in"
-					style="--anim-stagger: 3; opacity: 0;"
-				>
-					<cite class="not-italic before:content-['-'] before:pr-2">
-						guz013
-					</cite>
-				</p>
-			</hgroup>
 		</header>
+		<main
+			aria-labelledby="about"
+			class="w-90vw xl:w-50vw lg:text-xl h-70vh text-justify -translate-y-20vh"
+		>
+			<h2 id="about" class="opacity-0">About</h2>
+			<p class="animate slide-from-b fade-in" style="--anim-stagger: 4; opacity: 0;">
+				Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+				reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
+				esse exercitation amet. Nisi anim cupidatat excepteur officia.
+				Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+				voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
+				officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
+				commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+				Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
+				officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
+				sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
+				consectetur et est culpa et culpa duis.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+				reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
+				esse exercitation amet. Nisi anim cupidatat excepteur officia.
+				Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+				voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
+				officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
+				commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+				Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
+				officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
+				sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
+				consectetur et est culpa et culpa duis.
+			</p>
+		</main>
 	}
 }
