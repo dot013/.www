@@ -15,7 +15,7 @@ on:
 jobs:
   lint:
     name: Lint
-    if: ${{ github.repository == 'dot013/.www-new' }}
+    if: ${{ github.repository == 'dot013/.www' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
