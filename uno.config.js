@@ -12,23 +12,26 @@ import { variantGetParameter } from '@unocss/rule-utils';
 
 import * as utils from './uno-utils.js';
 
+/**
+ * Preset based on https://github.com/tailwindlabs/tailwindcss-container-queries
+ */
 const presetContainers = definePreset(
 	/**
 	 * @param {{ containers?: Record<string, string | number>}} [options={}]
 	 */
 	(options = {}) => {
 		const defaultContainers = {
-			'xs': '20rem',
-			'sm': '24rem',
-			'md': '28rem',
-			'lg': '32rem',
-			'xl': '36rem',
-			'2xl': '42rem',
-			'3xl': '48rem',
-			'4xl': '56rem',
-			'5xl': '64rem',
-			'6xl': '72rem',
-			'7xl': '80rem',
+			'xs': '20rem' /* 320px */,
+			'sm': '24rem' /* 384px */,
+			'md': '28rem' /* 448px */,
+			'lg': '32rem' /* 512px */,
+			'xl': '36rem' /* 576px */,
+			'2xl': '42rem' /* 672px */,
+			'3xl': '48rem' /* 768px */,
+			'4xl': '56rem' /* 896px */,
+			'5xl': '64rem' /* 1024px */,
+			'6xl': '72rem' /* 1152px */,
+			'7xl': '80rem' /* 1280px */,
 		};
 		options.containers = {
 			...defaultContainers,
