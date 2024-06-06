@@ -20,6 +20,7 @@ templ Page(title string) {
 		<body
 			class={ "flex flex-col justify-center items-center " +
 			"w-screen overflow-x-hidden text-white bg-black font-sans m-0" }
+			style="--anim-slide-from-y: 10px; --anim-delay: 120ms; --anim-duration: 0.6s;"
 		>
 			{ children... }
 		</body>

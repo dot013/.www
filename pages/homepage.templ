@@ -16,7 +16,6 @@ templ Homepage() {
 		})
 		<header
 			class="h-screen w-screen flex justify-center items-center"
-			style="--anim-slide-from-y: 10px; --anim-delay: 120ms; --anim-duration: 0.6s;"
 		>
 			<div class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem w-90% lg:w-80% xl:w-60%">
 				<div class="w-50% xl:w-25%">
@@ -26,15 +25,13 @@ templ Homepage() {
 						style="--anim-stagger: 1;  opacity: 0;"
 					/>
 				</div>
-				<hgroup class="font-cal w-full lg:max-w-45rem">
-					<h1
-						class={ "mb-0 lg:mt-0 prose text-5xl lg:text-6xl xl:text-7xl " +
-						"animate slide-from-b fade-in" }
-						style="--anim-stagger: 2; opacity: 0;"
-					>
-						Someone who's trying to improve
-					</h1>
-				</hgroup>
+				<h1
+					class={ "w-full lg:max-w-45rem mb-0 lg:mt-0 prose text-2.9rem lg:text-6xl xl:text-7xl " +
+					"animate slide-from-b fade-in" }
+					style="--anim-stagger: 2; opacity: 0;"
+				>
+					Someone who's trying to improve
+				</h1>
 			</div>
 		</header>
 		<main
@@ -55,7 +52,7 @@ templ Homepage() {
 				sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
 				consectetur et est culpa et culpa duis.
 			</p>
-			<p>
+			<p class="animate slide-from-b fade-in" style="--anim-stagger: 5; opacity: 0;">
 				Lorem ipsum dolor sit amet, officia excepteur ex fugiat
 				reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
 				esse exercitation amet. Nisi anim cupidatat excepteur officia.
