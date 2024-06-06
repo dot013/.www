@@ -6,6 +6,7 @@
     "@iconify-json/solar": "^1.1.9",
     "@types/node": "^20.12.12",
     "@unocss/cli": "^0.60.3",
+    "@unocss/rule-utils": "^0.60.4",
     "unocss": "^0.60.3"
   }
 }

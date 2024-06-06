@@ -17,6 +17,9 @@ devDependencies:
   '@unocss/cli':
     specifier: ^0.60.3
     version: 0.60.3
+  '@unocss/rule-utils':
+    specifier: ^0.60.4
+    version: 0.60.4
   unocss:
     specifier: ^0.60.3
     version: 0.60.3(postcss@8.4.38)(vite@5.2.11)
@@ -847,6 +850,10 @@ packages:
     resolution: {integrity: sha512-4bBX1pavDl2DSCozEII7bxYGT0IkyO7kKlUuCtooTePWyLjf2F7essdzHkJ00EpNR64kkebR9V0lqBMBo07VPw==}
     dev: true
 
+  /@unocss/core@0.60.4:
+    resolution: {integrity: sha512-6tz8KTzC30oB0YikwRQoIpJ6Y6Dg+ZiK3NfCIsH+UX11bh2J2M53as2EL/5VQCqtiUn3YP0ZEzR2d1AWX78RCA==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants@0.60.3:
     resolution: {integrity: sha512-PnwNwkeAHmbJbrf5XN0xQG1KT1VQEye8neYn5yz1MHnT8Cj2nqjrqoCRGLCLhpOUg3/MNj+bpiA7hGnFbXWaCQ==}
     dependencies:
@@ -947,6 +954,14 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       '@unocss/core': 0.60.3
+      magic-string: 0.30.10
+    dev: true
+
+  /@unocss/rule-utils@0.60.4:
+    resolution: {integrity: sha512-7qUN33NM4T/IwWavm9VIOCZ2+4hLBc0YUGxcMNTDZSFQRQLkWe3N5dOlgwKXtMyMKatZfbIRUKVDUgvEefoCTA==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@unocss/core': 0.60.4
       magic-string: 0.30.10
     dev: true
 
