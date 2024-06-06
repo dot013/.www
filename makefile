@@ -11,6 +11,7 @@ dev-unocss:
 dev-air:
 	air -build.pre_cmd 'make templ' \
 		-build.include_ext 'templ,css' \
+		-build.exclude_dir 'node_modules' \
 		-proxy.enabled true \
 		-proxy.app_port $(PORT) \
 		-proxy.proxy_port $$(($(PORT) + 1)) \
@@ -18,7 +19,8 @@ dev-air:
 
 dev-vercel:
 	air -build.pre_cmd 'make build-vercel' \
-		-build.include_ext 'templ' \
+		-build.include_ext 'templ,css' \
+		-build.exclude_dir 'node_modules' \
 		-build.cmd 'make build-vercel' \
 		-build.bin './bin/vercel' \
 		-proxy.enabled true \
