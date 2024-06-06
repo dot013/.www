@@ -1,0 +1,74 @@
+package components
+
+import "strings"
+import "slices"
+import "cmp"
+
+type Project struct {
+	Name     string
+	Summary  string
+	Image    templ.SafeURL
+	Link     templ.SafeURL
+	Icon     string
+	WIP      bool
+	Current  bool
+	Language string
+}
+
+func SortProjects(projects []Project) []Project {
+	slices.SortFunc(projects, func(a, b Project) int {
+		if (a.Current && !b.Current) || (a.WIP && !b.WIP) {
+			return -1
+		}
+		return cmp.Compare(a.Name, b.Name)
+	})
+	return projects
+}
+
+templ ProjectCard(project Project) {
+	<article
+		class="bg-dark-gray relative h-100% test:m-1 @container/projectcard-size"
+		aria-labelledby={ "project-" + strings.ReplaceAll(project.Name, " ", "-") }
+	>
+		<div class="hidden @[h:12rem]/projectcard:block max-h-50% overflow-hidden relative">
+			<picture class="h-100% flex items-center -translate-y-25%">
+				<img class="h-auto w-100% self-center" src={ string(project.Image) } alt=""/>
+			</picture>
+			<div aria-hidden="true" class="w-100% h-100% absolute top-0 bg-gradient-to-t from-dark-gray"></div>
+		</div>
+		<div class="px-10 py-5">
+			<hgroup class="flex items-center justify-between">
+				<h3
+					id={ "project-" + project.Name }
+					class="font-cal text-xl m-0"
+				>
+					{ project.Name }
+				</h3>
+				<p
+					aria-label="Status"
+					class="top-0 right-0 m-0 text-xs"
+				>
+					if project.Current {
+						<span class="bg-mauve text-dark-gray rounded-xl px-2">Current</span>
+					}
+					if project.WIP {
+						<span class="bg-yellow text-dark-gray rounded-xl px-2">
+							<abbr class="decoration-none" title="Work In Progress">WIP</abbr>
+						</span>
+					}
+				</p>
+			</hgroup>
+			<p
+				class="m-0 text-sm text-gray text-justify line-clamp-2"
+			>
+				{ project.Summary }
+			</p>
+			<!-- <p
+			aria-label="Used language"
+			class="absolute top-0 right-0"
+		>
+			{ project.Language }
+		</p> -->
+		</div>
+	</article>
+}

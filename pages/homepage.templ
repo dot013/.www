@@ -5,6 +5,39 @@ import (
 	"www/components"
 )
 
+var mockProjects = []components.Project{
+	{
+		Name:     "rec-sh",
+		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+		Link:     templ.SafeURL("https://github.com/dot013/rec-sh"),
+		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+		Icon:     "i-solar:programming-bold",
+		WIP:      false,
+		Current:  false,
+		Language: "bash",
+	},
+	{
+		Name:     ".mdparser",
+		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+		Link:     templ.SafeURL("https://github.com/dot013/rec-sh"),
+		Image:    templ.SafeURL("https://images.unsplash.com/photo-1560697024-fd4affa63094?q=80&w=2630&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+		Icon:     "i-simple-icons:rust",
+		WIP:      true,
+		Current:  false,
+		Language: "rust",
+	},
+	{
+		Name:     ".www",
+		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+		Link:     templ.SafeURL("https://github.com/dot013/.www"),
+		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+		Icon:     "i-simple-icons:go",
+		WIP:      true,
+		Current:  true,
+		Language: "golang",
+	},
+}
+
 templ Homepage() {
 	@layouts.Page("013") {
 		@components.Nav([]components.Link{
@@ -66,6 +99,23 @@ templ Homepage() {
 				consectetur et est culpa et culpa duis.
 			</p>
 		</main>
+		<section
+			aria-labelledby="projects"
+			class="w-90vw xl:w-50vw h-90vh"
+		>
+			<h2 id="projects" class="font-cal text-5xl lg:text-6xl xl:text-7xl">Projects.</h2>
+			<div class="grid grod-flow-row auto-rows-[minmax(7rem,_2fr)] gap-5">
+				for i, project := range components.SortProjects(mockProjects) {
+					if i == 0 {
+						<span class="row-span-2">
+							@components.ProjectCard(project)
+						</span>
+					} else {
+						@components.ProjectCard(project)
+					}
+				}
+			</div>
+		</section>
 		<footer>
 			<div
 				aria-hidden="true"
