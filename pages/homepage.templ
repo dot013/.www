@@ -69,9 +69,13 @@ templ Homepage() {
 		<footer>
 			<div
 				aria-hidden="true"
-				class={ "fixed bottom-0 left-0 w-screen h-50vh " +
-				"bg-transparent bg-gradient-to-t from-black from-10%" }
-			></div>
+				class="h-0 w-0 pointer-events-none bg-transparent!"
+			>
+				<div
+					class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
+					"bg-transparent bg-gradient-to-t from-black from-10%" }
+				></div>
+			</div>
 		</footer>
 	}
 }
