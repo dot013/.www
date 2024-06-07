@@ -9,6 +9,7 @@ import {
 } from 'unocss';
 import { definePreset } from 'unocss';
 import { variantGetParameter } from '@unocss/rule-utils';
+import { colorResolver, parseColor } from '@unocss/preset-mini/utils';
 
 import * as utils from './uno-utils.js';
 
@@ -61,7 +62,6 @@ const presetContainers = definePreset(
 						if (variant) {
 							const [match, rest, label] = variant;
 							const unit = utils.bracket(match);
-							console.log(match, rest, label)
 
 							/** @type {string | undefined } */
 							let container;
@@ -112,6 +112,26 @@ export default defineConfig({
 			'yellow': '#f9e2af',
 		},
 	},
+	rules: [
+		[
+			'scrollbar',
+			{
+				'scrollbar-color': 'var(--un-scrollbar-thumb, #ddd) var(--un-scrollbar-track, #f5f5f5)',
+			},
+		],
+		[
+			/^(?:scrollbar-)?thumb-(?:color-)?(.+)$/,
+			// @ts-expect-error
+			colorResolver('--un-scrollbar-thumb', 'scrollbar-thumb'),
+			{ autocomplete: 'scrollbar-thumb-$colors' },
+		],
+		[
+			/^(?:scrollbar-)?track-(?:color-)?(.+)$/,
+			// @ts-expect-error
+			colorResolver('--un-scrollbar-track', 'scrollbar-thumb'),
+			{ autocomplete: 'scrollbar-track-$colors' },
+		],
+	],
 	cli: {
 		entry: {
 			patterns: [

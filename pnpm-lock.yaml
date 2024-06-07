@@ -17,6 +17,12 @@ devDependencies:
   '@unocss/cli':
     specifier: ^0.60.3
     version: 0.60.3
+  '@unocss/core':
+    specifier: ^0.60.4
+    version: 0.60.4
+  '@unocss/preset-mini':
+    specifier: ^0.60.4
+    version: 0.60.4
   '@unocss/rule-utils':
     specifier: ^0.60.4
     version: 0.60.4
@@ -860,6 +866,12 @@ packages:
       '@unocss/core': 0.60.3
     dev: true
 
+  /@unocss/extractor-arbitrary-variants@0.60.4:
+    resolution: {integrity: sha512-USuFGs5CLft9q7IGNdAEp1oliuUns+W7OO0Tx5qtx/oBh6pU/L93lcNNsuuGNrMU8BCmF3atx1/PEmGymgJ7VA==}
+    dependencies:
+      '@unocss/core': 0.60.4
+    dev: true
+
   /@unocss/inspector@0.60.3:
     resolution: {integrity: sha512-2cXAPA1yddB79mmpMXxPpSpizn4TskAsB7aSocbprOTYIU2Ff53gfkkijnLixrBvbG8xw91d9oPuI5Hm9GCyMQ==}
     dependencies:
@@ -908,6 +920,14 @@ packages:
       '@unocss/rule-utils': 0.60.3
     dev: true
 
+  /@unocss/preset-mini@0.60.4:
+    resolution: {integrity: sha512-ZiHbP69vkyz0xmhqzC4B4PegwV+LPlZOBT7cRhsh0P8oPOQKYOyDRy4rAl+sJBJeIrggn1r1LgN+Z0Xvd8Ytcw==}
+    dependencies:
+      '@unocss/core': 0.60.4
+      '@unocss/extractor-arbitrary-variants': 0.60.4
+      '@unocss/rule-utils': 0.60.4
+    dev: true
+
   /@unocss/preset-tagify@0.60.3:
     resolution: {integrity: sha512-pzD6bgtGuIk7M1n/JQiR6EpwnVvafSTHoM70Jhf+T8MSuatDb+KFJCn3VELV2v38aikcUY5cTf95jqHQdzOAhQ==}
     dependencies:
@@ -953,7 +973,7 @@ packages:
     resolution: {integrity: sha512-I47/DcKQ2z12W80+Ffth0K6LzNvqcQPYRWk7KwVemVoEiGYamMV8/s+SbB26Fk9KUFjh+Ns/pGAo4iJZo0ueUQ==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.60.3
+      '@unocss/core': 0.60.4
       magic-string: 0.30.10
     dev: true
 

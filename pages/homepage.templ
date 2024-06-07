@@ -67,7 +67,9 @@ templ Homepage() {
 			{Text: "blog", Link: templ.SafeURL("#blog")},
 			{Text: "contact", Link: templ.SafeURL("#contact")},
 		})
-		<div class="w-screen h-screen overflow-y-scroll snap-y">
+		<div
+			class="w-screen h-screen overflow-x-hidden overflow-y-scroll snap-y scrollbar thumb-gray track-black"
+		>
 			<header
 				class="h-screen w-screen flex justify-center items-center snap-start"
 				id="about"
