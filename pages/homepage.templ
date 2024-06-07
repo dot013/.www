@@ -60,20 +60,16 @@ var mockProjects = []components.Project{
 
 templ Homepage() {
 	@layouts.Page("013") {
-		<body
-			class={ "flex flex-col justify-center items-center snap-y snap-mandatory " +
-			"w-screen overflow-x-hidden text-white bg-black font-sans m-0" }
-			style="--anim-slide-from-y: 10px; --anim-delay: 120ms; --anim-duration: 0.6s;"
-		>
-			@components.Nav([]components.Link{
-				{Text: "about", Link: templ.SafeURL("#about")},
-				{Text: "projects", Link: templ.SafeURL("#projects")},
-				{Text: "gallery", Link: templ.SafeURL("#gallery")},
-				{Text: "blog", Link: templ.SafeURL("#blog")},
-				{Text: "contact", Link: templ.SafeURL("#contact")},
-			})
+		@components.Nav([]components.Link{
+			{Text: "about", Link: templ.SafeURL("#about")},
+			{Text: "projects", Link: templ.SafeURL("#projects")},
+			{Text: "gallery", Link: templ.SafeURL("#gallery")},
+			{Text: "blog", Link: templ.SafeURL("#blog")},
+			{Text: "contact", Link: templ.SafeURL("#contact")},
+		})
+		<div class="w-screen h-screen overflow-y-scroll snap-y">
 			<header
-				class="h-screen w-screen flex justify-center items-center snap-center"
+				class="h-screen w-screen flex justify-center items-center"
 				id="about"
 			>
 				<div class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem w-90% lg:w-80% xl:w-60%">
@@ -95,9 +91,9 @@ templ Homepage() {
 			</header>
 			<main
 				aria-labelledby="about-header"
-				class="w-screen h-50vh lg:h-60vh xl:h-50vh flex justify-center items-center snap-center"
+				class="w-screen h-50vh lg:h-60vh xl:h-50vh flex justify-center items-center"
 			>
-				<div class="w-90% xl:w-50% lg:text-xl -translate-y-20% xl:-translate-y-45% text-justify">
+				<div class="w-90% xl:w-50% lg:text-xl -translate-y-20% xl:-translate-y-45% text-justify snap-center">
 					<h2 id="about-header" class="opacity-0">About</h2>
 					<p class="animate slide-from-b fade-in" style="--anim-stagger: 4; opacity: 0;">
 						Lorem ipsum dolor sit amet, officia excepteur ex fugiat
@@ -130,9 +126,9 @@ templ Homepage() {
 			<section
 				aria-labelledby="projects-header"
 				id="projects"
-				class="w-screen h-screen flex justify-center items-center snap-center"
+				class="w-screen h-screen flex justify-center items-center"
 			>
-				<div class="w-90% xl:w-50%">
+				<div class="w-90% xl:w-50% snap-center">
 					<hgroup class="flex justify-between my-5">
 						<h2 id="projects-header" class="font-cal text-5xl m-0">Projects.</h2>
 						<p class="m-0">
@@ -169,9 +165,9 @@ templ Homepage() {
 			<section
 				aria-labelledby="gallery-header"
 				id="gallery"
-				class="w-screen h-screen flex justify-center items-center snap-center"
+				class="w-screen h-screen flex justify-center items-center"
 			>
-				<div class="w-90% xl:w-50%">
+				<div class="w-90% xl:w-50% snap-center">
 					<hgroup class="flex justify-between my-5">
 						<h2 id="gallery-header" class="font-cal text-5xl m-0">Gallery.</h2>
 						<p class="m-0">
@@ -188,17 +184,17 @@ templ Homepage() {
 					</hgroup>
 				</div>
 			</section>
-			<footer>
+		</div>
+		<footer>
+			<div
+				aria-hidden="true"
+				class="h-0 w-0 pointer-events-none bg-transparent!"
+			>
 				<div
-					aria-hidden="true"
-					class="h-0 w-0 pointer-events-none bg-transparent!"
-				>
-					<div
-						class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
+					class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
 					"bg-transparent bg-gradient-to-t from-black from-10%" }
-					></div>
-				</div>
-			</footer>
-		</body>
+				></div>
+			</div>
+		</footer>
 	}
 }
