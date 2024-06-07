@@ -68,7 +68,8 @@ templ Homepage() {
 			{Text: "contact", Link: templ.SafeURL("#contact")},
 		})
 		<div
-			class="w-screen h-screen overflow-x-hidden overflow-y-scroll snap-y scrollbar thumb-gray track-black"
+			class={ "w-screen h-screen overflow-x-hidden overflow-y-scroll " +
+					"snap-y scrollbar thumb-gray contrast-more:thumb-light-gray track-black" }
 		>
 			<header
 				class="h-screen w-screen flex justify-center items-center snap-start"
@@ -80,11 +81,12 @@ templ Homepage() {
 							src="/logo-013.svg"
 							class="animate slide-from-b fade-in"
 							style="--anim-stagger: 1;  opacity: 0;"
+							alt="Guz013's logo"
 						/>
 					</div>
 					<h1
 						class={ "w-full lg:max-w-45rem mb-0 lg:mt-0 prose text-2.9rem lg:text-6xl xl:text-4.3rem " +
-						"animate slide-from-b fade-in" }
+								"animate slide-from-b fade-in" }
 						style="--anim-stagger: 2; opacity: 0;"
 					>
 						Someone who's trying to improve

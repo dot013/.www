@@ -24,15 +24,23 @@ templ Nav(links []Link) {
 	<section
 		class="flex flex-row justify-between fixed top-0 font-cal w-90% lg:w-80% xl:w-90% z-110"
 	>
-		<p class="text-gray cannot-hover md:block!">Gustavo "Guz" L. de Mello</p>
-		<p class="text-gray can-hover md:hidden">Guz</p>
+		<p
+			class="text-gray contrast-more:text-light-gray cannot-hover md:block!"
+		>
+			Gustavo "Guz" L. de Mello
+		</p>
+		<p
+			class="text-gray contrast-more:text-light-gray can-hover md:hidden"
+		>
+			Guz
+		</p>
 		<nav class="can-hover">
 			<ul class="flex flex-row gap-3 list-none">
 				for _, i := range links {
 					<li class="transform-gpu hover:-translate-y-0.2 transition-transform">
 						<a
-							class={ "text-gray hover:text-white no-underline " +
-							"hover:underline transition-color transition-1s" }
+							class={ "text-gray contrast-more:text-light-gray hover:text-white " +
+							"no-underline hover:underline transition-color transition-1s" }
 							id={ fmt.Sprintf("nav-anchor-%s", i.Link) }
 							href={ i.Link }
 						>
@@ -62,13 +70,13 @@ templ Nav(links []Link) {
 				for _, i := range links {
 					<li
 						class={ "hover:text-white transform-gpu hover:-translate-y-0.2 " +
-					"transition-transform after:content-['@'] " +
-					"after:pl-4 after:i-solar:posts-carousel-vertical-line-duotone" }
+								"transition-transform after:content-['@'] " +
+								"after:pl-4 after:i-solar:posts-carousel-vertical-line-duotone" }
 					>
 						<a
 							class={ "text-gray hover:text-white no-underline " +
-						"hover:underline transition-color transition-1s" }
-							id={ fmt.Sprintf("nav-anchor-%s", i.Link) }
+									"hover:underline transition-color transition-1s" }
+							id={ fmt.Sprintf("nav-anchor-touch-%s", i.Link) }
 							href={ i.Link }
 						>
 							{ i.Text }
