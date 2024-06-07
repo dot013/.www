@@ -60,111 +60,145 @@ var mockProjects = []components.Project{
 
 templ Homepage() {
 	@layouts.Page("013") {
-		@components.Nav([]components.Link{
-			{Text: "about", Link: templ.SafeURL("#about")},
-			{Text: "projects", Link: templ.SafeURL("#projects")},
-			{Text: "gallery", Link: templ.SafeURL("#gallery")},
-			{Text: "blog", Link: templ.SafeURL("#blog")},
-			{Text: "contact", Link: templ.SafeURL("#contact")},
-		})
-		<header
-			class="h-screen w-screen flex justify-center items-center"
+		<body
+			class={ "flex flex-col justify-center items-center snap-y snap-mandatory " +
+			"w-screen overflow-x-hidden text-white bg-black font-sans m-0" }
+			style="--anim-slide-from-y: 10px; --anim-delay: 120ms; --anim-duration: 0.6s;"
 		>
-			<div class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem w-90% lg:w-80% xl:w-60%">
-				<div class="w-50% xl:w-25%">
-					<img
-						src="/logo-013.svg"
-						class="animate slide-from-b fade-in"
-						style="--anim-stagger: 1;  opacity: 0;"
-					/>
-				</div>
-				<h1
-					class={ "w-full lg:max-w-45rem mb-0 lg:mt-0 prose text-2.9rem lg:text-6xl xl:text-7xl " +
-					"animate slide-from-b fade-in" }
-					style="--anim-stagger: 2; opacity: 0;"
-				>
-					Someone who's trying to improve
-				</h1>
-			</div>
-		</header>
-		<main
-			aria-labelledby="about"
-			class="w-90vw xl:w-50vw lg:text-xl h-80vh xl:h-60vh text-justify -translate-y-20vh"
-		>
-			<h2 id="about" class="opacity-0 -translate-y-20vh">About</h2>
-			<p class="animate slide-from-b fade-in" style="--anim-stagger: 4; opacity: 0;">
-				Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-				reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
-				esse exercitation amet. Nisi anim cupidatat excepteur officia.
-				Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-				voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
-				officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
-				commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-				Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
-				officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
-				sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
-				consectetur et est culpa et culpa duis.
-			</p>
-			<p class="animate slide-from-b fade-in" style="--anim-stagger: 5; opacity: 0;">
-				Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-				reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
-				esse exercitation amet. Nisi anim cupidatat excepteur officia.
-				Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-				voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
-				officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
-				commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-				Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
-				officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
-				sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
-				consectetur et est culpa et culpa duis.
-			</p>
-		</main>
-		<section
-			aria-labelledby="projects"
-			class="w-90vw xl:w-50vw h-90vh xl:h-80vh"
-		>
-			<hgroup class="flex justify-between my-5">
-				<h2 id="projects" class="font-cal text-5xl m-0">Projects.</h2>
-				<p class="m-0">
-					<a
-						href="/projects"
-						class="decoration-none text-light-gray flex items-center"
-					>
-						See more
-						<span
-							class="w-5 h-5 bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
-						></span>
-					</a>
-				</p>
-			</hgroup>
-			<div class="grid grid-flow-row auto-rows-[minmax(6.7rem,_2fr)] md:grid-cols-2 gap-5">
-				for i, project := range components.SortProjects(mockProjects) {
-					if i == 0 {
-						<div class="row-span-2">
-							@components.ProjectCard(project)
-						</div>
-					} else if i < 3 {
-						<div>
-							@components.ProjectCard(project)
-						</div>
-					} else {
-						<div class="hidden md:block">
-							@components.ProjectCard(project)
-						</div>
-					}
-				}
-			</div>
-		</section>
-		<footer>
-			<div
-				aria-hidden="true"
-				class="h-0 w-0 pointer-events-none bg-transparent!"
+			@components.Nav([]components.Link{
+				{Text: "about", Link: templ.SafeURL("#about")},
+				{Text: "projects", Link: templ.SafeURL("#projects")},
+				{Text: "gallery", Link: templ.SafeURL("#gallery")},
+				{Text: "blog", Link: templ.SafeURL("#blog")},
+				{Text: "contact", Link: templ.SafeURL("#contact")},
+			})
+			<header
+				class="h-screen w-screen flex justify-center items-center snap-center"
+				id="about"
 			>
+				<div class="flex flex-col lg:flex-row lg:justify-between lg:gap-5rem w-90% lg:w-80% xl:w-60%">
+					<div class="w-50% xl:w-25%">
+						<img
+							src="/logo-013.svg"
+							class="animate slide-from-b fade-in"
+							style="--anim-stagger: 1;  opacity: 0;"
+						/>
+					</div>
+					<h1
+						class={ "w-full lg:max-w-45rem mb-0 lg:mt-0 prose text-2.9rem lg:text-6xl xl:text-4.3rem " +
+						"animate slide-from-b fade-in" }
+						style="--anim-stagger: 2; opacity: 0;"
+					>
+						Someone who's trying to improve
+					</h1>
+				</div>
+			</header>
+			<main
+				aria-labelledby="about-header"
+				class="w-screen h-50vh lg:h-60vh xl:h-50vh flex justify-center items-center snap-center"
+			>
+				<div class="w-90% xl:w-50% lg:text-xl -translate-y-20% xl:-translate-y-45% text-justify">
+					<h2 id="about-header" class="opacity-0">About</h2>
+					<p class="animate slide-from-b fade-in" style="--anim-stagger: 4; opacity: 0;">
+						Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+						reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
+						esse exercitation amet. Nisi anim cupidatat excepteur officia.
+						Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+						voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
+						officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
+						commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+						Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
+						officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
+						sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
+						consectetur et est culpa et culpa duis.
+					</p>
+					<p class="animate slide-from-b fade-in" style="--anim-stagger: 5; opacity: 0;">
+						Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+						reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
+						esse exercitation amet. Nisi anim cupidatat excepteur officia.
+						Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+						voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
+						officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
+						commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+						Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
+						officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
+						sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
+						consectetur et est culpa et culpa duis.
+					</p>
+				</div>
+			</main>
+			<section
+				aria-labelledby="projects-header"
+				id="projects"
+				class="w-screen h-screen flex justify-center items-center snap-center"
+			>
+				<div class="w-90% xl:w-50%">
+					<hgroup class="flex justify-between my-5">
+						<h2 id="projects-header" class="font-cal text-5xl m-0">Projects.</h2>
+						<p class="m-0">
+							<a
+								href="/projects"
+								class="decoration-none text-light-gray flex items-center"
+							>
+								See more
+								<span
+									class="w-5 h-5 bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
+								></span>
+							</a>
+						</p>
+					</hgroup>
+					<div class="grid grid-flow-row auto-rows-[minmax(6.7rem,_2fr)] md:grid-cols-2 gap-5">
+						for i, project := range components.SortProjects(mockProjects) {
+							if i == 0 {
+								<div class="row-span-2">
+									@components.ProjectCard(project)
+								</div>
+							} else if i < 3 {
+								<div>
+									@components.ProjectCard(project)
+								</div>
+							} else {
+								<div class="hidden md:block">
+									@components.ProjectCard(project)
+								</div>
+							}
+						}
+					</div>
+				</div>
+			</section>
+			<section
+				aria-labelledby="gallery-header"
+				id="gallery"
+				class="w-screen h-screen flex justify-center items-center snap-center"
+			>
+				<div class="w-90% xl:w-50%">
+					<hgroup class="flex justify-between my-5">
+						<h2 id="gallery-header" class="font-cal text-5xl m-0">Gallery.</h2>
+						<p class="m-0">
+							<a
+								href="/gallery"
+								class="decoration-none text-light-gray flex items-center"
+							>
+								See more
+								<span
+									class="w-5 h-5 bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
+								></span>
+							</a>
+						</p>
+					</hgroup>
+				</div>
+			</section>
+			<footer>
 				<div
-					class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
+					aria-hidden="true"
+					class="h-0 w-0 pointer-events-none bg-transparent!"
+				>
+					<div
+						class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
 					"bg-transparent bg-gradient-to-t from-black from-10%" }
-				></div>
-			</div>
-		</footer>
+					></div>
+				</div>
+			</footer>
+		</body>
 	}
 }
