@@ -39,39 +39,44 @@ templ ProjectCard(project Project) {
 				class="w-100% h-100% absolute top-0 bg-gradient-to-t from-dark-gray translate-y-1%"
 			></div>
 		</div>
-		<div class="px-10 py-5">
-			<hgroup class="flex items-center justify-between">
-				<h3
-					id={ "project-" + project.Name }
-					class="font-cal text-xl m-0"
-				>
-					{ project.Name }
-				</h3>
+		<div class="px-10 py-5 flex gap-5">
+			<div class="hidden @[w:24rem]/projectcard:flex items-center justify-center">
+				<div class={ "w-15 h-15 bg-light-gray text-0 " + project.Icon }>Icon</div>
+			</div>
+			<div>
+				<hgroup class="flex items-center justify-between">
+					<h3
+						id={ "project-" + project.Name }
+						class="font-cal text-xl m-0"
+					>
+						{ project.Name }
+					</h3>
+					<p
+						aria-label="Status"
+						class="top-0 right-0 m-0 text-xs"
+					>
+						if project.Current {
+							<span class="bg-mauve text-dark-gray rounded-xl px-2">Current</span>
+						}
+						if project.WIP {
+							<span class="bg-yellow text-dark-gray rounded-xl px-2">
+								<abbr class="decoration-none" title="Work In Progress">WIP</abbr>
+							</span>
+						}
+					</p>
+				</hgroup>
 				<p
-					aria-label="Status"
-					class="top-0 right-0 m-0 text-xs"
+					class="m-0 text-sm text-gray text-justify line-clamp-2"
 				>
-					if project.Current {
-						<span class="bg-mauve text-dark-gray rounded-xl px-2">Current</span>
-					}
-					if project.WIP {
-						<span class="bg-yellow text-dark-gray rounded-xl px-2">
-							<abbr class="decoration-none" title="Work In Progress">WIP</abbr>
-						</span>
-					}
+					{ project.Summary }
 				</p>
-			</hgroup>
-			<p
-				class="m-0 text-sm text-gray text-justify line-clamp-2"
-			>
-				{ project.Summary }
-			</p>
-			<!-- <p
+				<!-- <p
 			aria-label="Used language"
 			class="absolute top-0 right-0"
 		>
 			{ project.Language }
 		</p> -->
+			</div>
 		</div>
 	</article>
 }

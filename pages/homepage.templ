@@ -36,6 +36,26 @@ var mockProjects = []components.Project{
 		Current:  true,
 		Language: "golang",
 	},
+	{
+		Name:     "Project",
+		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+		Link:     templ.SafeURL("https://github.com/dot013/.www"),
+		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+		Icon:     "i-solar:box-bold-duotone",
+		WIP:      false,
+		Current:  false,
+		Language: "nix",
+	},
+	{
+		Name:     "Project",
+		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+		Link:     templ.SafeURL("https://github.com/dot013/.www"),
+		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+		Icon:     "i-solar:box-bold-duotone",
+		WIP:      false,
+		Current:  false,
+		Language: "nix",
+	},
 }
 
 templ Homepage() {
@@ -104,14 +124,20 @@ templ Homepage() {
 			class="w-90vw xl:w-50vw h-90vh"
 		>
 			<h2 id="projects" class="font-cal text-5xl lg:text-6xl xl:text-7xl">Projects.</h2>
-			<div class="grid grod-flow-row auto-rows-[minmax(7rem,_2fr)] gap-5">
+			<div class="grid grid-flow-row auto-rows-[minmax(7rem,_2fr)] md:grid-cols-2 gap-5">
 				for i, project := range components.SortProjects(mockProjects) {
 					if i == 0 {
-						<span class="row-span-2">
+						<div class="row-span-2">
 							@components.ProjectCard(project)
-						</span>
+						</div>
+					} else if i < 3 {
+						<div>
+							@components.ProjectCard(project)
+						</div>
 					} else {
-						@components.ProjectCard(project)
+						<div class="hidden md:block">
+							@components.ProjectCard(project)
+						</div>
 					}
 				}
 			</div>
