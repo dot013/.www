@@ -5,60 +5,12 @@ import (
 	"www/components"
 )
 
-var mockProjects = []components.Project{
-	{
-		Name:     "rec-sh",
-		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-		Link:     templ.SafeURL("https://github.com/dot013/rec-sh"),
-		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-		Icon:     "i-solar:programming-bold",
-		WIP:      false,
-		Current:  false,
-		Language: "bash",
-	},
-	{
-		Name:     ".mdparser",
-		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-		Link:     templ.SafeURL("https://github.com/dot013/rec-sh"),
-		Image:    templ.SafeURL("https://images.unsplash.com/photo-1560697024-fd4affa63094?q=80&w=2630&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-		Icon:     "i-simple-icons:rust",
-		WIP:      true,
-		Current:  false,
-		Language: "rust",
-	},
-	{
-		Name:     ".www",
-		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-		Link:     templ.SafeURL("https://github.com/dot013/.www"),
-		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-		Icon:     "i-simple-icons:go",
-		WIP:      true,
-		Current:  true,
-		Language: "golang",
-	},
-	{
-		Name:     "Project",
-		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-		Link:     templ.SafeURL("https://github.com/dot013/.www"),
-		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-		Icon:     "i-solar:box-bold-duotone",
-		WIP:      false,
-		Current:  false,
-		Language: "nix",
-	},
-	{
-		Name:     "Project",
-		Summary:  "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-		Link:     templ.SafeURL("https://github.com/dot013/.www"),
-		Image:    templ.SafeURL("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-		Icon:     "i-solar:box-bold-duotone",
-		WIP:      false,
-		Current:  false,
-		Language: "nix",
-	},
+type HomepageProps struct {
+	Projects []components.Project
+	Images   []string
 }
 
-templ Homepage() {
+templ Homepage(props HomepageProps) {
 	@layouts.Page("013") {
 		@components.Nav([]components.Link{
 			{Text: "about", Link: templ.SafeURL("#about")},
@@ -148,7 +100,7 @@ templ Homepage() {
 						</p>
 					</hgroup>
 					<div class="grid grid-flow-row auto-rows-[minmax(6.7rem,_2fr)] md:grid-cols-2 gap-5">
-						for i, project := range components.SortProjects(mockProjects) {
+						for i, project := range components.SortProjects(props.Projects) {
 							if i == 0 {
 								<div class="row-span-2">
 									@components.ProjectCard(project)
@@ -169,9 +121,9 @@ templ Homepage() {
 			<section
 				aria-labelledby="gallery-header"
 				id="gallery"
-				class="w-screen h-screen flex justify-center items-center"
+				class="w-screen min-h-screen flex justify-center items-center"
 			>
-				<div class="w-90% xl:w-50% snap-center">
+				<div class="w-90% xl:w-50% max-h-60% snap-start">
 					<hgroup class="flex justify-between my-5">
 						<h2 id="gallery-header" class="font-cal text-5xl m-0">Gallery.</h2>
 						<p class="m-0">
@@ -186,6 +138,11 @@ templ Homepage() {
 							</a>
 						</p>
 					</hgroup>
+					<div class="flex flex-wrap flex-col w-100% max-h-65vh md:max-h-70vh overflow-hidden">
+						for _, img := range props.Images {
+							<div class="w-50% md:w-33.3%"><img src={ img } class="max-w-100%"/></div>
+						}
+					</div>
 				</div>
 			</section>
 		</div>
