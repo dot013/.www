@@ -140,7 +140,9 @@ templ Homepage(props HomepageProps) {
 					</hgroup>
 					<div class="flex flex-wrap flex-col w-100% max-h-65vh md:max-h-70vh overflow-hidden">
 						for _, img := range props.Images {
-							<div class="w-50% md:w-33.3%"><img src={ img } class="max-w-100%"/></div>
+							<div class="w-50% md:w-33.3%">
+								@components.Image(templ.SafeURL(img), "", "block max-w-100%")
+							</div>
 						}
 					</div>
 				</div>
