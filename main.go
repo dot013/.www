@@ -36,12 +36,6 @@ func main() {
 		logger.Printf("Registering page route. page=%s route=%s", route.Path, path)
 
 		mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
-			logger.Printf("Handling request. path=%s", r.URL.Path)
-
-			if *dev {
-				w.Header().Add("Cache-Control", "max-age=0")
-			}
-
 			w.Header().Add("Content-Type", "text/html")
 
 			err := route.Component.Render(r.Context(), w)
@@ -51,17 +45,11 @@ func main() {
 		})
 	}
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if *dev {
-			w.Header().Add("Cache-Control", "max-age=0")
-		}
-
 		if r.URL.Path != "/" {
 			logger.Printf("Handling file server request. path=%s", r.URL.Path)
 			http.FileServer(http.Dir(*staticDir)).ServeHTTP(w, r)
 			return
 		}
-
-		logger.Printf("Handling request. path=%s", r.URL.Path)
 
 		w.Header().Add("Content-Type", "text/html")
 
@@ -77,7 +65,9 @@ func main() {
 	})
 
 	logger.Printf("Running server at port: %v", *port)
-	err := http.ListenAndServe(fmt.Sprintf(":%v", *port), mux)
+
+	middleware := internals.NewMiddleware(mux, *dev, log.Default())
+	err := http.ListenAndServe(fmt.Sprintf(":%v", *port), middleware)
 	if err != nil {
 		logger.Fatalf("Server crashed due to:\n%s", err)
 	}
