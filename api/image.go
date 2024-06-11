@@ -180,5 +180,6 @@ func Image(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Add("Cache-Control", "max-age=604800, stale-while-revalidate=86400, stale-if-error=86400")
+	w.Header().Add("CDN-Cache-Control", "max-age=604800")
 	w.Header().Add("Content-Type", mime)
 }
