@@ -60,7 +60,11 @@ func Image(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if u.Hostname() == "" {
-			u.Scheme = r.URL.Scheme
+			if r.URL.Scheme == "" {
+				u.Scheme = "https"
+			} else {
+				u.Scheme = r.URL.Scheme
+			}
 			u.Host = r.Host
 		}
 	}
