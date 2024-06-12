@@ -16,7 +16,7 @@ import (
 )
 
 type Image struct {
-	image.Image
+	img         image.Image
 	mime        string
 	JpegOptions jpeg.Options
 	GifOptions  gif.Options
@@ -47,21 +47,21 @@ func NewImage(b []byte) (Image, error) {
 		return Image{}, err
 	}
 
-	image := img.(Image)
-	image.mime = m
-	image.JpegOptions = jpeg.Options{
-		Quality: 70,
-	}
-	image.GifOptions = gif.Options{
-		NumColors: 256 / 2,
-	}
-	image.WebpOptions = webp.Options{
-		Lossless: true,
-		Quality:  70.0,
-		Exact:    true,
-	}
-
-	return image, nil
+	return Image{
+		img:  img,
+		mime: m,
+		JpegOptions: jpeg.Options{
+			Quality: 70,
+		},
+		GifOptions: gif.Options{
+			NumColors: 256,
+		},
+		WebpOptions: webp.Options{
+			Lossless: true,
+			Quality:  70.0,
+			Exact:    true,
+		},
+	}, nil
 
 }
 
@@ -76,13 +76,13 @@ func (i *Image) Encode(w io.Writer) error {
 
 	switch i.mime {
 	case "image/png":
-		err = png.Encode(w, i.Image)
+		err = png.Encode(w, i.img)
 	case "image/jpeg":
-		err = jpeg.Encode(w, i.Image, &jpeg.Options{Quality: 70})
+		err = jpeg.Encode(w, i.img, &jpeg.Options{Quality: 70})
 	case "image/gif":
-		err = gif.Encode(w, i.Image, &gif.Options{NumColors: 256})
+		err = gif.Encode(w, i.img, &gif.Options{NumColors: 256})
 	case "image/webp":
-		err = webp.Encode(w, i.Image, &webp.Options{Lossless: true})
+		err = webp.Encode(w, i.img, &webp.Options{Lossless: true})
 	default:
 		err = errors.ErrUnsupported
 	}
@@ -99,7 +99,7 @@ func (i *Image) Quality(q float64) {
 }
 
 func (i *Image) Optimize(threshold int) {
-	w := i.Bounds().Max.X
+	w := i.img.Bounds().Max.X
 
 	if threshold >= w {
 		return
@@ -110,7 +110,7 @@ func (i *Image) Optimize(threshold int) {
 }
 
 func (i *Image) Scale(s int) {
-	r := i.Bounds()
+	r := i.img.Bounds()
 	w, h := r.Max.X, r.Max.Y
 
 	var nw, nh int
@@ -124,7 +124,7 @@ func (i *Image) Scale(s int) {
 		nw, nh = w, h
 	}
 
-	imaging.Resize(i, nw, nh, imaging.CatmullRom)
+	imaging.Resize(i.img, nw, nh, imaging.CatmullRom)
 }
 
 func (i *Image) GetMime() string {
