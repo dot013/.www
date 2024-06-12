@@ -47,7 +47,7 @@ func Image(w http.ResponseWriter, r *http.Request) {
 		} else {
 			u.Scheme = r.URL.Scheme
 		}
-		u.Host = r.URL.Host
+		u.Host = r.Host
 	}
 
 	if _, some := params["threshold"]; !some {
