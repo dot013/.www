@@ -105,7 +105,7 @@ func (i *Image) Optimize(threshold int) {
 		return
 	}
 
-	d := threshold / w
+	d := w / threshold
 	i.Scale(d * -1)
 }
 
@@ -124,7 +124,7 @@ func (i *Image) Scale(s int) {
 		nw, nh = w, h
 	}
 
-	imaging.Resize(i.img, nw, nh, imaging.CatmullRom)
+	i.img = imaging.Resize(i.img, nw, nh, imaging.CatmullRom)
 }
 
 func (i *Image) GetMime() string {
