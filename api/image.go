@@ -54,7 +54,7 @@ func Image(w http.ResponseWriter, r *http.Request) {
 		error("\"threshold\" parameter missing", errors.New("Missing argument"), http.StatusBadRequest)
 		return
 	}
-	threshold, err := strconv.Atoi("threshold")
+	threshold, err := strconv.Atoi(params.Get("threshold"))
 	if error("\"threshold\" parameter is not a valid integer", err, http.StatusBadRequest) {
 		return
 	}
