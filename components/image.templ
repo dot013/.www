@@ -6,23 +6,23 @@ templ Image(src templ.SafeURL, alt string, class string) {
 	<picture class={ class }>
 		<source
 			media="(min-width: 1536px)"
-			srcset={ "/api/image?scale=-6&url=" + url.PathEscape(string(src)) }
+			srcset={ "/api/image?threshold=1536&url=" + url.PathEscape(string(src)) }
 		/>
 		<source
 			media="(min-width: 1280px)"
-			srcset={ "/api/image?scale=-7&url=" + url.PathEscape(string(src)) }
+			srcset={ "/api/image?threshold=1280&url=" + url.PathEscape(string(src)) }
 		/>
 		<source
 			media="(min-width: 1024px)"
-			srcset={ "/api/image?scale=-8&url=" + url.PathEscape(string(src)) }
+			srcset={ "/api/image?threshold=1024&url=" + url.PathEscape(string(src)) }
 		/>
 		<source
 			media="(min-width: 768px)"
-			srcset={ "/api/image?scale=-9&url=" + url.PathEscape(string(src)) }
+			srcset={ "/api/image?threshold=768&url=" + url.PathEscape(string(src)) }
 		/>
 		<source
 			media="(min-width: 640px)"
-			srcset={ "/api/image?scale=-10&url=" + url.PathEscape(string(src)) }
+			srcset={ "/api/image?threshold=640&url=" + url.PathEscape(string(src)) }
 		/>
 		<img src={ string(src) } alt={ alt } class="w-100% h-100%"/>
 	</picture>
