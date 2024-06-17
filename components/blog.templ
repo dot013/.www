@@ -1,0 +1,48 @@
+package components
+
+import "strings"
+
+type Blog struct {
+	Title   string
+	Summary string
+	Link    templ.SafeURL
+}
+
+templ BlogSummary(entry Blog) {
+	<article
+		aria-labelledby={ "blog-entry-" + strings.ReplaceAll(entry.Title, " ", "-") }
+	>
+		<h3
+			id={ "blog-entry-" + strings.ReplaceAll(entry.Title, " ", "-") }
+			class="font-cal text-xl"
+		>
+			{ entry.Title }
+		</h3>
+		<div class="relative w-fit h-fit">
+			<p class="line-clamp-3 text-justify text-light-gray">
+				{ entry.Summary }
+			</p>
+			<div
+				aria-hidden="true"
+				class="h-0 w-0 pointer-events-none bg-transparent!"
+			>
+				<div
+					class={ "absolute left-0 top-0 h-100% w-100% " +
+						"bg-transparent bg-gradient-to-t from-black/50" }
+				></div>
+			</div>
+		</div>
+		<div>
+			<a
+				class={ "transition-1s transition-color text-gray hover:text-light-gray no-underline " +
+				"hover:underline transform-gpu hover:-translate-y-0.2 transition-transform" }
+				href={ entry.Link }
+			>
+				Read all
+				<span
+					class="w-3 h-3 bg-gray hover:bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
+				></span>
+			</a>
+		</div>
+	</article>
+}

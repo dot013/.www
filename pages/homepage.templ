@@ -7,6 +7,7 @@ import (
 
 type HomepageProps struct {
 	Projects []components.Project
+	Blogs    []components.Blog
 	Images   []string
 }
 
@@ -143,6 +144,44 @@ templ Homepage(props HomepageProps) {
 							<div class="w-50% md:w-33.3%">
 								@components.Image(templ.SafeURL(img), "", "block max-w-100%")
 							</div>
+						}
+					</div>
+				</div>
+			</section>
+			<section
+				aria-labelledby="blog-header"
+				id="blog"
+				class="w-screen min-h-screen flex justify-center items-center"
+			>
+				<div class="w-90% xl:w-50% max-h-60% snap-start">
+					<hgroup class="flex justify-between my-5">
+						<h2 id="blog-header" class="font-cal text-5xl m-0">Blog.</h2>
+						<p class="m-0">
+							<a
+								href="/blog"
+								class="decoration-none text-light-gray flex items-center"
+							>
+								See more
+								<span
+									class="w-5 h-5 bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
+								></span>
+							</a>
+						</p>
+					</hgroup>
+					<div
+						class={ "w-100% max-h-65vh md:max-h-70vh overflow-hidden " +
+								"md:grid grid-cols-2 gap-4" }
+					>
+						for i, blog := range props.Blogs {
+							if i < 2 {
+								<div class="">
+									@components.BlogSummary(blog)
+								</div>
+							} else if i < 4 {
+								<div class="hidden md:block">
+									@components.BlogSummary(blog)
+								</div>
+							}
 						}
 					</div>
 				</div>
