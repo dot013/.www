@@ -23,9 +23,6 @@ devDependencies:
   '@unocss/preset-mini':
     specifier: ^0.60.4
     version: 0.60.4
-  '@unocss/rule-utils':
-    specifier: ^0.60.4
-    version: 0.60.4
   unocss:
     specifier: ^0.60.3
     version: 0.60.3(postcss@8.4.38)(vite@5.2.11)

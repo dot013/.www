@@ -8,8 +8,7 @@ import {
 	transformerVariantGroup,
 } from 'unocss';
 import { definePreset } from 'unocss';
-import { variantGetParameter } from '@unocss/rule-utils';
-import { colorResolver, parseColor } from '@unocss/preset-mini/utils';
+import { colorResolver, variantGetParameter } from '@unocss/preset-mini/utils';
 
 import * as utils from './uno-utils.js';
 
