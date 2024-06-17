@@ -1,13 +1,11 @@
 PORT?=8080
 
-build:
+build: templ
 	pnpm unocss
-	templ generate
 	go build -o bin/www
 
-build/static:
+build/static: templ
 	pnpm unocss
-	templ generate
 	go run ./cmd/build
 
 dev/templ:
@@ -51,3 +49,11 @@ clean:
 	if [[ -d "bin" ]]; then rm -r ./bin; fi
 	rm ./static/uno.css
 	rm $(TEMPL_FILES)
+
+# For some reason "templ generate" does not detect the files in CI,
+# so this is a workaround.
+TEMPL_FILES=$(patsubst %.templ, %_templ.go, $(wildcard **/*.templ))
+templ: $(TEMPL_FILES)
+	@echo Generating templ files
+%_templ.go: %.templ
+	templ generate -f $^ > /dev/null
