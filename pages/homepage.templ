@@ -20,7 +20,7 @@ templ Homepage(props HomepageProps) {
 			{Text: "contact", Link: templ.SafeURL("#contact")},
 		})
 		<div
-			class={ "w-screen h-screen overflow-x-hidden overflow-y-scroll " +
+			class={ "w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth motion-reduce:scroll-auto " +
 					"snap-y scrollbar thumb-gray contrast-more:thumb-light-gray track-black" }
 		>
 			<header
