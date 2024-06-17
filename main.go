@@ -18,6 +18,7 @@ func main() {
 	staticDir := flag.String("s", "./static", "the directory to copy static files from")
 	port := flag.Int("p", 8080, "the port to run the server")
 	dev := flag.Bool("d", false, "if the server is in development mode")
+	cache := flag.Bool("c", true, "if the static files are cached")
 
 	flag.Parse()
 
@@ -66,7 +67,7 @@ func main() {
 
 	logger.Printf("Running server at port: %v", *port)
 
-	middleware := internals.NewMiddleware(mux, *dev, log.Default())
+	middleware := internals.NewMiddleware(mux, *dev, !*cache, log.Default())
 	err := http.ListenAndServe(fmt.Sprintf(":%v", *port), middleware)
 	if err != nil {
 		logger.Fatalf("Server crashed due to:\n%s", err)

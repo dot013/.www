@@ -3,6 +3,7 @@ Session.vim
 .direnv
 .vercel
 *_templ.go
+*_templ.txt
 dist
 tmp
 bin
