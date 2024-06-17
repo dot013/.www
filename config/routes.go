@@ -121,7 +121,8 @@ func init() {
 var ROUTES = []internals.Page{
 	{Path: "index.html", Component: pages.Homepage(pages.HomepageProps{
 		Projects: mockProjects,
-		Images:   images,
+		Images:   []string{},
+		Blogs:    mockBlog,
 	})},
 }
 

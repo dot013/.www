@@ -8,6 +8,7 @@ import (
 type Middleware struct {
 	handler http.Handler
 	dev     bool
+	noCache bool
 	logger  *log.Logger
 }
 
@@ -22,12 +23,12 @@ func (m *Middleware) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	m.handler.ServeHTTP(w, r)
 
-	if m.dev {
+	if m.noCache {
 		w.Header().Del("Cache-Control")
 		w.Header().Add("Cache-Control", "max-age=0")
 	}
 }
 
-func NewMiddleware(handler http.Handler, dev bool, logger *log.Logger) *Middleware {
-	return &Middleware{handler, dev, logger}
+func NewMiddleware(handler http.Handler, dev bool, noCache bool, logger *log.Logger) *Middleware {
+	return &Middleware{handler, dev, noCache, logger}
 }
