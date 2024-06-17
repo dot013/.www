@@ -5,6 +5,11 @@ build:
 	templ generate
 	go build -o bin/www
 
+build/static:
+	pnpm unocss
+	templ generate
+	go run ./cmd/build
+
 dev/templ:
 	templ generate --watch \
 		--proxy=http://localhost:$(PORT) \

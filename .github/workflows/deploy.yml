@@ -37,7 +37,7 @@ jobs:
         run: |
           pnpm install
           go install github.com/a-h/templ/cmd/templ@latest
-          make build-vercel
+          make build/static
       - name: Deploy
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
