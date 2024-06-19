@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"strconv"
 
+	"www/internals"
+
 	"github.com/chai2010/webp"
 	"github.com/sunshineplan/imgconv"
 )
@@ -24,23 +26,8 @@ func ImgOptimize(i image.Image, threshold int) image.Image {
 	return imgconv.Resize(i, &imgconv.ResizeOption{Width: w / d})
 }
 
-func errorHelper(w http.ResponseWriter) func(msg string, err error, status int) bool {
-	return func(msg string, err error, status int) bool {
-		if err != nil {
-			w.WriteHeader(status)
-			_, err = w.Write([]byte(msg + "\n Error: " + err.Error()))
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				_, _ = w.Write([]byte("Error trying to return error code (somehow):\n" + err.Error()))
-			}
-			return true
-		}
-		return false
-	}
-}
-
 func Image(w http.ResponseWriter, r *http.Request) {
-	error := errorHelper(w)
+	error := internals.HttpErrorHelper(w)
 
 	params, err := url.ParseQuery(r.URL.RawQuery)
 	if error("Error trying to parse query parameters", err, http.StatusInternalServerError) {

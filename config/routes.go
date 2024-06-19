@@ -128,4 +128,6 @@ var ROUTES = []internals.Page{
 
 func APIROUTES(mux *http.ServeMux) {
 	mux.HandleFunc("/api/image", api.Image)
+	mux.HandleFunc("/robots.txt", api.RobotsTxt)
+	mux.HandleFunc("/ai.txt", api.AiTxt)
 }
