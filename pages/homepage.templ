@@ -1,6 +1,8 @@
 package pages
 
 import (
+	"strings"
+
 	"www/layouts"
 	"www/components"
 )
@@ -186,6 +188,96 @@ templ Homepage(props HomepageProps) {
 					</div>
 				</div>
 			</section>
+			<section
+				aria-labelledby="contact-header"
+				id="contact"
+				class="w-screen min-h-screen flex justify-center items-center"
+			>
+				<div class="w-90% xl:w-50% max-h-60% snap-start">
+					<hgroup class="flex justify-between my-5">
+						<h2 id="contact-header" class="font-cal text-5xl m-0">Contact.</h2>
+					</hgroup>
+					<ul class="text-xl pl-0 flex justify-between list-none w-100%">
+						<li>
+							@contactList("Software") {
+								@contactItem("i-simple-icons:github", "GitHub", "http://github.com/guz013")
+								@contactItem("i-simple-icons:codeberg", "Codeberg", "http://codeberg.org/guz013")
+							}
+						</li>
+						<li>
+							@contactList("Social") {
+								@contactItem("i-simple-icons:twitter", "Twitter", "http://twitter.com/guz013_")
+								@contactItem("i-simple-icons:mastodon", "Mastodon", "http://mastodon.social/@guz013")
+							}
+						</li>
+						<li>
+							@contactList("Photography") {
+								@contactItem("i-simple-icons:instagram", "Instagram", "http://instagram.com/guz013_")
+								@contactItem("i-simple-icons:pixelfed", "Pixelfed", "http://pixelfed.social/guz013")
+							}
+						</li>
+						<li>
+							@contactList("Art") {
+								@contactItem("i-simple-icons:instagram", "Instagram", "http://instagram.com/guzsart")
+								@contactItem("i-simple-icons:pixelfed", "Pixelfed", "http://pixelfed.social/guzsart")
+							}
+						</li>
+					</ul>
+					<div
+						class="mt-10"
+						aria-labelledby="business-contact"
+					>
+						<h3
+							class="text-gray contrast-more:text-white text-xl font-normal mb-0 inline-flex items-center gap-2"
+							id="business-contact"
+						>
+							Business
+							<a
+								class={ "inline-flex items-center text-black text-sm p-0.5 px-2 rounded-lg no-underline " +
+										"transition-all transition-2s bg-gray hover:bg-light-gray bg-gradient-to-t from-black/50 " +
+										"contrast-more:bg-light-gray contrast-more:hover:bg-white contrast-more:from-black/0" }
+								rel="noopener nofollow noreferrer"
+								href="mailto:contact.guz013@gmail.com"
+							>
+								<span
+									class="inline-block i-solar:hand-shake-bold-duotone w-4.5 h-4.5"
+									aria-hidden="true"
+								></span>
+								<span class="opacity-0">(</span>Open to hire!<span class="opacity-0">)</span>
+							</a>
+						</h3>
+						<ul class="list-none pl-0 flex gap-5 relative">
+							<a
+								class={ "transition-all transition-2s text-light-gray hover:text-white " +
+										"flex items-center gap-1 no-underline hover:underline" }
+								target="_blank"
+								rel="noopener nofollow noreferrer"
+								href="mailto:contact.guz013@gmail.com"
+							>
+								<span
+									aria-hidden="true"
+									class="inline-block w-4.5 h-4.5 i-solar:mailbox-bold-duotone"
+								></span>
+								<span
+									class="transform-gpu pl-4.5 -translate-x-4.5 hover:-translate-y-0.2 transition-transform"
+								>
+									contact.guz013@gmail.com
+								</span>
+							</a>
+							@contactItem("i-simple-icons:linkedin", "LinkedIn", "http://linkedin.com/in/guz013")
+							<div
+								aria-hidden="true"
+								class="h-0 w-0 pointer-events-none bg-transparent! contrast-more:hidden"
+							>
+								<div
+									class={ "absolute left-0 top-0 h-100% w-100% " +
+									"bg-transparent bg-gradient-to-t from-black/50" }
+								></div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</section>
 		</div>
 		<footer>
 			<div
@@ -199,4 +291,50 @@ templ Homepage(props HomepageProps) {
 			</div>
 		</footer>
 	}
+}
+
+templ contactList(label string) {
+	<h3
+		class="mb-2 text-gray contrast-more:text-white font-normal text-xl"
+		id={ "contact-list-" + strings.ReplaceAll(label, " ", "-") }
+	>{ label }</h3>
+	<ul
+		class="list-none pl-0 relative"
+		aria-labelledby={ "contact-list-" + strings.ReplaceAll(label, " ", "-") }
+	>
+		{ children... }
+		<div
+			aria-hidden="true"
+			class="h-0 w-0 pointer-events-none bg-transparent! contrast-more:hidden"
+		>
+			<div
+				class={ "absolute left-0 top-0 h-100% w-100% " +
+						"bg-transparent bg-gradient-to-t from-black/50" }
+			></div>
+		</div>
+	</ul>
+}
+
+templ contactItem(icon string, label string, url string) {
+	<li>
+		<a
+			class={ "transition-all transition-2s text-light-gray hover:text-white " +
+					"flex items-center gap-1 no-underline hover:underline" }
+			target="_blank"
+			rel="noopener nofollow noreferrer"
+			href={ templ.URL(url) }
+		>
+			<span
+				aria-hidden="true"
+				class={ "inline-block w-4.5 h-4.5 " + icon }
+			></span>
+			<span
+				class="transform-gpu pl-4.5 -translate-x-4.5 hover:-translate-y-0.2 transition-transform"
+			>{ label }</span>
+			<span
+				aria-hidden="true"
+				class="inline-block i-solar:arrow-right-up-line-duotone w-4.5 h-4.5 -translate-x-4.5"
+			></span>
+		</a>
+	</li>
 }
