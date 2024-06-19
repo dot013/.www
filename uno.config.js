@@ -12,6 +12,39 @@ import { colorResolver, variantGetParameter } from '@unocss/preset-mini/utils';
 
 import * as utils from './uno-utils.js';
 
+const presetForcedColors = definePreset(
+	/** @returns {import('unocss').Preset} */
+	() => {
+		return {
+			name: 'preset-forced-colors',
+			variants: [
+				{
+					name: 'forced-colors',
+					match(matcher, ctx) {
+						if (!matcher.startsWith('forced-colors:')) {
+							return matcher
+						}
+						return {
+							matcher: matcher.slice('forced-colors:'.length),
+							handle: (input, next) => next({
+								...input,
+								parent: `${input.parent ? `${input.parent} $$` : ''}@media(forced-colors: active)`,
+								parentOrder: 1000,
+							}),
+						}
+						/* handle: (input, next) => next({
+							...input,
+							parent: `${input.parent ? `${input.parent} $$` : ''}@container${label ? ` ${label} ` : ''}${container}`,
+							parentOrder: order,
+						}), */
+					},
+					multiPass: true,
+				}
+			],
+		}
+	}
+)
+
 /**
  * Preset based on https://github.com/tailwindlabs/tailwindcss-container-queries
  */
@@ -141,6 +174,7 @@ export default defineConfig({
 		},
 	},
 	presets: [
+		presetForcedColors(),
 		presetContainers(),
 		presetIcons(),
 		presetTypography(),

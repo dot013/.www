@@ -27,7 +27,8 @@ func SortProjects(projects []Project) []Project {
 
 templ ProjectCard(project Project) {
 	<article
-		class="bg-dark-gray relative h-100% test:m-1 @container/projectcard-size"
+		class={ "bg-dark-gray relative h-100% test:m-1 @container/projectcard-size " +
+				"border-white forced-colors:border-3 forced-colors:border-solid" }
 		aria-labelledby={ "project-" + strings.ReplaceAll(project.Name, " ", "-") }
 	>
 		<div class="hidden @[h:12rem]/projectcard:block max-h-50% overflow-hidden relative">
@@ -40,7 +41,7 @@ templ ProjectCard(project Project) {
 			></div>
 		</div>
 		<div class="px-10 py-5 flex gap-5">
-			<div class="hidden @[w:24rem]/projectcard:flex items-center justify-center">
+			<div class="hidden @[w:24rem]/projectcard:flex items-center justify-center forced-colors:hidden">
 				<div class={ "w-12 h-12 bg-light-gray text-0 " + project.Icon }>Icon</div>
 			</div>
 			<div>
@@ -70,12 +71,6 @@ templ ProjectCard(project Project) {
 				>
 					{ project.Summary }
 				</p>
-				<!-- <p
-			aria-label="Used language"
-			class="absolute top-0 right-0"
-		>
-			{ project.Language }
-		</p> -->
 			</div>
 		</div>
 	</article>
