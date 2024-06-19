@@ -197,7 +197,7 @@ templ Homepage(props HomepageProps) {
 					<hgroup class="flex justify-between my-5">
 						<h2 id="contact-header" class="font-cal text-5xl m-0">Contact.</h2>
 					</hgroup>
-					<ul class="text-xl pl-0 flex justify-between list-none w-100%">
+					<ul class="text-xl pl-0 grid grid-cols-2 md:grid-cols-4 list-none w-100%">
 						<li>
 							@contactList("Software") {
 								@contactItem("i-simple-icons:github", "GitHub", "http://github.com/guz013")
@@ -224,7 +224,7 @@ templ Homepage(props HomepageProps) {
 						</li>
 					</ul>
 					<div
-						class="mt-10"
+						class="mt-3 md:mt-10"
 						aria-labelledby="business-contact"
 					>
 						<h3
@@ -246,7 +246,7 @@ templ Homepage(props HomepageProps) {
 								<span class="opacity-0">(</span>Open to hire!<span class="opacity-0">)</span>
 							</a>
 						</h3>
-						<ul class="list-none pl-0 flex gap-5 relative">
+						<ul class="list-none pl-0 flex gap-2 md:gap-5 relative">
 							<a
 								class={ "transition-all transition-2s text-light-gray hover:text-white " +
 										"flex items-center gap-1 no-underline hover:underline" }
