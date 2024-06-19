@@ -24,7 +24,7 @@ templ BlogSummary(entry Blog) {
 			</p>
 			<div
 				aria-hidden="true"
-				class="h-0 w-0 pointer-events-none bg-transparent!"
+				class="h-0 w-0 pointer-events-none bg-transparent! contrast-more:hidden"
 			>
 				<div
 					class={ "absolute left-0 top-0 h-100% w-100% " +
@@ -34,13 +34,14 @@ templ BlogSummary(entry Blog) {
 		</div>
 		<div>
 			<a
-				class={ "transition-1s transition-color text-gray hover:text-light-gray no-underline " +
-				"hover:underline transform-gpu hover:-translate-y-0.2 transition-transform" }
+				class={ "transition-2s transition-all text-gray hover:text-light-gray no-underline " +
+				"hover:underline transform-gpu hover:-translate-y-0.2 " +
+				"contrast-more:text-light-gray contrast-more:hover:text-white" }
 				href={ entry.Link }
 			>
 				Read all
 				<span
-					class="w-3 h-3 bg-gray hover:bg-light-gray i-solar:arrow-right-up-line-duotone inline-block"
+					class="w-3 h-3 i-solar:arrow-right-up-line-duotone inline-block"
 				></span>
 			</a>
 		</div>
