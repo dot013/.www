@@ -247,23 +247,25 @@ templ Homepage(props HomepageProps) {
 							</a>
 						</h3>
 						<ul class="list-none pl-0 flex gap-2 md:gap-5 relative">
-							<a
-								class={ "transition-all transition-2s text-light-gray hover:text-white " +
+							<li>
+								<a
+									class={ "transition-all transition-2s text-light-gray hover:text-white " +
 										"flex items-center gap-1 no-underline hover:underline" }
-								target="_blank"
-								rel="noopener nofollow noreferrer"
-								href="mailto:contact.guz013@gmail.com"
-							>
-								<span
-									aria-hidden="true"
-									class="inline-block w-4.5 h-4.5 i-solar:mailbox-bold-duotone"
-								></span>
-								<span
-									class="transform-gpu pl-4.5 -translate-x-4.5 hover:-translate-y-0.2 transition-transform"
+									target="_blank"
+									rel="noopener nofollow noreferrer"
+									href="mailto:contact.guz013@gmail.com"
 								>
-									contact.guz013@gmail.com
-								</span>
-							</a>
+									<span
+										aria-hidden="true"
+										class="inline-block w-4.5 h-4.5 i-solar:mailbox-bold-duotone"
+									></span>
+									<span
+										class="transform-gpu pl-4.5 -translate-x-4.5 hover:-translate-y-0.2 transition-transform"
+									>
+										contact.guz013@gmail.com
+									</span>
+								</a>
+							</li>
 							@contactItem("i-simple-icons:linkedin", "LinkedIn", "http://linkedin.com/in/guz013")
 							<div
 								aria-hidden="true"
