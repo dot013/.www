@@ -22,7 +22,8 @@ templ Homepage(props HomepageProps) {
 			{Text: "blog", Link: templ.SafeURL("#blog")},
 			{Text: "contact", Link: templ.SafeURL("#contact")},
 		})
-		<div
+		<section
+			id="homepage"
 			class={ "w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth motion-reduce:scroll-auto " +
 					"snap-y scrollbar thumb-gray contrast-more:thumb-light-gray track-black" }
 		>
@@ -36,12 +37,12 @@ templ Homepage(props HomepageProps) {
 							src="/logo-013.svg"
 							class="animate slide-from-b fade-in"
 							style="--anim-stagger: 1;  opacity: 0;"
-							alt="Guz013's logo"
+							alt="013 Logo"
 						/>
 					</div>
 					<h1
 						class={ "w-full lg:max-w-45rem mb-0 lg:mt-0 prose text-2.9rem lg:text-6xl xl:text-4.3rem " +
-								"animate slide-from-b fade-in" }
+									"animate slide-from-b fade-in" }
 						style="--anim-stagger: 2; opacity: 0;"
 					>
 						Someone who's trying to improve
@@ -250,7 +251,7 @@ templ Homepage(props HomepageProps) {
 							<li>
 								<a
 									class={ "transition-all transition-2s text-light-gray hover:text-white " +
-										"flex items-center gap-1 no-underline hover:underline" }
+											"flex items-center gap-1 no-underline hover:underline" }
 									target="_blank"
 									rel="noopener nofollow noreferrer"
 									href="mailto:contact.guz013@gmail.com"
@@ -280,18 +281,53 @@ templ Homepage(props HomepageProps) {
 					</div>
 				</div>
 			</section>
-		</div>
-		<footer>
+			<footer
+				aria-labelledby="footer-header"
+				class="w-screen min-h-screen flex justify-center items-center"
+			>
+				<div
+					class="w-90% xl:w-50% max-h-60% snap-start text-center"
+					id="footer"
+				>
+					<h3 id="footer-header" class="opacity-0">Footer</h3>
+					<p>Copyright &copy; 2024 Gustavo "Guz" L. de Mello</p>
+					<p class="text-sm text-gray contrast-more:text-light-gray" id="license">
+						Unless otherwise noticed, contents of this website itself are licensed under
+						the
+						<a
+							class={ "transition-all transition-2s text-gray hover:text-light-gray "+
+									"contrast-more:text-light-gray contrart-more:hover:text-white "+
+									"underline" }
+							href="https://creativecommons.org/licenses/by-sa/4.0/"
+							rel="noopener nofollow noreferrer"
+						>
+							Creative Commons Attribution-Share Alike 4.0 International ("CC BY-SA 4.0")
+						</a>.
+						Guz013, the 013 Logo, are trademarks of Gustavo L. de Mello. The underlyng
+						source code used to format and display that content is, unless otherwise noticed,
+						licensed under the
+						<a
+							class={ "transition-all transition-2s text-gray hover:text-light-gray "+
+									"contrast-more:text-light-gray contrart-more:hover:text-white "+
+									"underline" }
+							href="https://www.mozilla.org/en-US/MPL/2.0/"
+							rel="noopener nofollow noreferrer"
+						>
+							Mozilla Public License 2.0
+						</a>.
+					</p>
+				</div>
+			</footer>
 			<div
 				aria-hidden="true"
 				class="h-0 w-0 pointer-events-none bg-transparent!"
 			>
 				<div
 					class={ "fixed bottom-0 left-0 w-screen h-40vh md:h-20vh " +
-					"bg-transparent bg-gradient-to-t from-black from-10%" }
+							"bg-transparent bg-gradient-to-t from-black from-10%" }
 				></div>
 			</div>
-		</footer>
+		</section>
 	}
 }
 
